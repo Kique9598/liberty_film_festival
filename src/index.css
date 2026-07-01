@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── PARCHMENT ── */
+  --color-parch-50: #fdfcfb;
+  --color-parch-100: #f8f5f1;
+  --color-parch-200: #f1ece7; /* base */
+  --color-parch-300: #e6ddd4;
+  --color-parch-400: #d9cfc4;
+  --color-parch-500: #c8baa8;
+  --color-parch-600: #b0a08c;
+  --color-parch-700: #8c7d6a;
+  --color-parch-800: #635748;
+  --color-parch-900: #3a312a;
+
+  /* ── GOLD ── */
+  --color-gold-50: #faf8f2;
+  --color-gold-100: #f0ead8;
+  --color-gold-200: #e4d9c0;
+  --color-gold-300: #d4c9b0; /* light — surfaces + light text */
+  --color-gold-400: #b8a888; /* base */
+  --color-gold-500: #a8945c;
+  --color-gold-600: #8a7a60; /* dark — text on light */
+  --color-gold-700: #6e5f3a;
+  --color-gold-800: #4e4228;
+  --color-gold-900: #2e2614;
+
+  /* ── COPPER GREEN ── */
+  --color-green-50: #eef4f2;
+  --color-green-100: #d4e6e1;
+  --color-green-200: #aad0c6;
+  --color-green-300: #8cb8ae;
+  --color-green-400: #77998e; /* base */
+  --color-green-500: #5e7d73;
+  --color-green-600: #4a6259;
+  --color-green-700: #384b44;
+  --color-green-800: #26332f;
+  --color-green-900: #141c1a;
+
+  /* ── WARM BLACK ── */
+  --color-black-50: #2a2420;
+  --color-black-100: #221e1a;
+  --color-black-200: #1c1814;
+  --color-black-300: #161210;
+  --color-black-400: #100e0b; /* base */
+  --color-black-500: #0a0806;
+  --color-black-600: #060504;
+
+  /* ── WARM WHITE ── */
+  --color-white-50: #ffffff;
+  --color-white-100: #fefdfb;
+  --color-white-200: #fbf9f6;
+  --color-white-300: #f8f5f1;
+  --color-white-400: #f4f0ea; /* base */
+  --color-white-500: #ede7de;
+  --color-white-600: #e4dcd1;
+
+  /* ── SEMANTIC TOKENS ── */
+
+  /* backgrounds */
+  --color-bg-dark: var(--color-black-200);
+  --color-bg-dark-raised: var(--color-black-50);
+  --color-bg-light: var(--color-parch-200);
+  --color-bg-light-raised: var(--color-parch-100);
+  --color-bg-light-sunken: var(--color-parch-300);
+
+  /* text on dark */
+  --color-text-on-dark-primary: var(--color-white-300);
+  --color-text-on-dark-secondary: var(--color-gold-300);
+  --color-text-on-dark-tertiary: var(--color-gold-600);
+
+  /* text on light */
+  --color-text-on-light-primary: var(--color-black-50);
+  --color-text-on-light-secondary: var(--color-gold-600);
+  --color-text-on-light-tertiary: var(--color-gold-300);
+
+  /* accents */
+  --color-accent-gold: var(--color-gold-400);
+  --color-accent-gold-hover: var(--color-gold-600);
+  --color-accent-gold-light: var(--color-gold-300);
+  --color-accent-gold-subtle: var(--color-gold-100);
+  --color-accent-green: var(--color-green-400);
+  --color-accent-green-hover: var(--color-green-600);
+  --color-accent-green-subtle: var(--color-green-100);
+
+  /* text accent */
+  --color-text-gold-light: var(--color-gold-300);
+  --color-text-gold-dark: var(--color-gold-600);
+
+  /* borders */
+  --color-border-dark: var(--color-black-50);
+  --color-border-dark-2: #38302a;
+  --color-border-light: var(--color-parch-400);
+  --color-border-light-2: var(--color-parch-500);
+
+  /* interactive */
+  --color-focus: var(--color-gold-400);
+  --color-disabled: var(--color-parch-500);
+}
