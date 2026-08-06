@@ -97,3 +97,7 @@
   --color-focus: var(--color-gold-400);
   --color-disabled: var(--color-parch-500);
 }
+
+body {
+  @apply bg-[#F1ECE7];
+}
