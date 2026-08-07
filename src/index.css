@@ -1,6 +1,10 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap");
 
 @theme {
+  /* ── FONTS ── */
+  --font-cormorant: "Cormorant Garamond", serif;
+
   /* ── PARCHMENT ── */
   --color-parch-50: #fdfcfb;
   --color-parch-100: #f8f5f1;
@@ -100,4 +104,27 @@
 
 body {
   @apply bg-[#F1ECE7];
+}
+
+h1 {
+  @apply text-6xl font-cormorant;
+}
+
+@keyframes timeline-progress {
+  0% {
+    width: 0%;
+  }
+  70% {
+    width: 100%;
+  }
+  85% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+.timeline-progress-fill {
+  animation: timeline-progress 2.5s ease-in-out infinite;
 }
