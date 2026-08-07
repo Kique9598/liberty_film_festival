@@ -11,6 +11,24 @@ const Home = () => {
       <Section>
         <Timeline />
       </Section>
+      <Section>
+        <h2>Submission Requirements</h2>
+      </Section>
+      <Section className="bg-[#DCDFD5]">
+        <h2>A City-Wide Celebration of Student Filmmaking</h2>
+      </Section>
+      <Section>
+        <h2 className="text-center">Participating Schools</h2>
+      </Section>
+      <Section>
+        <h2>Donate</h2>
+      </Section>
+      <Section>
+        <h2>Join our mailing list</h2>
+      </Section>
+      <Section className="bg-[#DCDFD5]">
+        <h2>Footer tmp</h2>
+      </Section>
     </>
   );
 };

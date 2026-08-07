@@ -20,16 +20,16 @@ const Timeline = () => {
   }
 
   return (
-    <div className="flex py-2 px-6 gap-6 bg-[#FDFBFC] rounded-lg">
+    <div className="flex items-center py-2 px-6 gap-6 bg-[#FDFBFC] rounded-lg">
       <div className="flex flex-col gap-1">
         <p className="text-sm">Call for Films</p>
         <p className="text-xs text-gray-600">Submit for your school</p>
       </div>
-      <div className="flex flex-col flex-1 justify-center gap-2 text-sm">
+      <div className="flex flex-col flex-1 gap-2 text-sm">
         <div className="flex">
           <p className="flex flex-1 ">Submissions</p>
           <p className="flex flex-1 justify-center text-gray-400">Processing</p>
-          <p className="flex flex-1 justify-center text-gray-400">Tickets</p>
+          <p className="flex flex-1 justify-center text-gray-400">Lineup Drop</p>
           <p className="flex flex-1 justify-end text-gray-400">Showtime</p>
         </div>
         <div className="flex gap-1">

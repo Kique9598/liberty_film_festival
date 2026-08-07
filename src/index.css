@@ -107,7 +107,11 @@ body {
 }
 
 h1 {
-  @apply text-6xl font-cormorant;
+  @apply text-6xl font-cormorant font-light;
+}
+
+h2 {
+  @apply text-4xl font-cormorant mb-6 font-light;
 }
 
 @keyframes timeline-progress {
