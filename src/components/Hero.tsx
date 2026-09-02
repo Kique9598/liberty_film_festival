@@ -9,11 +9,11 @@ const Hero = () => {
         <div className="flex flex-3/5 flex-col gap-7">
           <h1>The Future of <br /> Cinema Starts Here.</h1>
           <div className="flex items-center gap-2">
-            <p>date*</p>
+            <span>date*</span>
             <div className="w-1.5 h-1.5 rounded-full bg-black"></div>
-            <p>time*</p>
+            <span>time*</span>
             <div className="w-1.5 h-1.5 rounded-full bg-black"></div>
-            <p>location*</p>
+            <span>location*</span>
           </div>
 
           <p>

@@ -21,16 +21,18 @@ const Timeline = () => {
 
   return (
     <div className="flex items-center py-2 px-6 gap-6 bg-[#FDFBFC] rounded-lg">
-      <div className="flex flex-col gap-1">
-        <p className="text-sm">Call for Films</p>
-        <p className="text-xs text-gray-600">Submit for your school</p>
+
+      <div className="hidden lg:flex flex-col gap-1">
+        <span className="text-sm">Call for Films</span>
+        <span className="text-xs text-gray-600">Submit for your school</span>
       </div>
+
       <div className="flex flex-col flex-1 gap-2 text-sm">
         <div className="flex">
-          <p className="flex flex-1 ">Submissions</p>
-          <p className="flex flex-1 justify-center text-gray-400">Processing</p>
-          <p className="flex flex-1 justify-center text-gray-400">Lineup Drop</p>
-          <p className="flex flex-1 justify-end text-gray-400">Showtime</p>
+          <span className="flex flex-1 ">Submissions</span>
+          <span className="flex flex-1 justify-center text-gray-400">Processing</span>
+          <span className="flex flex-1 justify-center text-gray-400">Lineup Drop</span>
+          <span className="flex flex-1 justify-end text-gray-400">Showtime</span>
         </div>
         <div className="flex gap-1">
           <div className="flex-1 bg-[#E3DDB0] rounded-full h-1 overflow-hidden">
@@ -41,30 +43,31 @@ const Timeline = () => {
           <div className="flex-1 bg-[#E3DDB0] rounded-full h-1 text-sm"></div>
         </div>
       </div>
-      <div className="flex gap-3 items-center">
-        <p className="text-gray-600 text-sm text-right">
+
+      <div className="hidden md:flex gap-3 items-center">
+        <span className="text-gray-600 text-sm text-right">
           Submissions <br /> close in
-        </p>
+        </span>
         <div className="flex px-2 py-1 gap-4 bg-[#F6F6F6] rounded-lg">
           <div className="flex flex-col items-center">
             {/* DAYS */}
-            <p className="font-bold">{formatTime(days)}</p>
-            <p className="text-[#A3A3A3] text-xs">DAY</p>
+            <span className="font-bold">{formatTime(days)}</span>
+            <span className="text-[#A3A3A3] text-xs">DAY</span>
           </div>
           <div className="flex flex-col items-center">
             {/* HOURS */}
-            <p className="font-bold">{formatTime(hours)}</p>
-            <p className="text-[#A3A3A3] text-xs">HRS</p>
+            <span className="font-bold">{formatTime(hours)}</span>
+            <span className="text-[#A3A3A3] text-xs">HRS</span>
           </div>
           <div className="flex flex-col items-center">
             {/* MINUTES */}
-            <p className="font-bold">{formatTime(minutes)}</p>
-            <p className="text-[#A3A3A3] text-xs">MIN</p>
+            <span className="font-bold">{formatTime(minutes)}</span>
+            <span className="text-[#A3A3A3] text-xs">MIN</span>
           </div>
           <div className="flex flex-col items-center">
             {/* SECONDS */}
-            <p className="font-bold">{formatTime(seconds)}</p>
-            <p className="text-[#A3A3A3] text-xs">SEC</p>
+            <span className="font-bold">{formatTime(seconds)}</span>
+            <span className="text-[#A3A3A3] text-xs">SEC</span>
           </div>
         </div>
         <div></div>
