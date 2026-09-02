@@ -114,6 +114,10 @@ h2 {
   @apply text-4xl font-cormorant mb-6 font-light;
 }
 
+p {
+  @apply mb-4
+}
+
 @keyframes timeline-progress {
   0% {
     width: 0%;
