@@ -6,7 +6,6 @@ import HeroButton from "../components/HeroButton";
 
 const schools = ["Columbia", "Pratt", "Fordham", "NYU", "Pace", "SVA", "Brooklyn College", "More"];
 
-
 const cell =
   "relative w-full aspect-video grid place-items-center p-3 " +
   "border-b border-[#B3A96F] " +

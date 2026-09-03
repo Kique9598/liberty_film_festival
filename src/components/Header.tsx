@@ -9,6 +9,7 @@ const Header = () => {
         <NavLink to="/">Home</NavLink>
         <NavLink to="/about">About</NavLink>
         <NavLink to="/submit">Submit</NavLink>
+        <NavLink to="/donate">Donate</NavLink>
       </nav>
       <div className="flex-1 flex justify-end">
         <NavButton to="/submit">Submit a Film</NavButton>

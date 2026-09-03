@@ -1,5 +1,5 @@
 type SectionProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
   variant?: "default" | "narrow" | "hero";
 };
