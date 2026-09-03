@@ -4,12 +4,22 @@ import Timeline from "../components/Timeline";
 import backdrop from "../assets/backdrop.png";
 import HeroButton from "../components/HeroButton";
 
+const schools = ["Columbia", "Pratt", "Fordham", "NYU", "Pace", "SVA", "Brooklyn College", "More"];
+
+
+const cell =
+  "relative w-full aspect-video grid place-items-center p-3 " +
+  "border-b border-[#B3A96F] " +
+  "[&:nth-child(n+7)]:border-b-0 md:[&:nth-child(n+5)]:border-b-0 " + // no line under last row
+  "after:absolute after:right-0 after:top-1/4 after:h-1/2 after:w-px after:bg-[#B3A96F] " +
+  "[&:nth-child(2n)]:after:hidden md:[&:nth-child(2n)]:after:block md:[&:nth-child(4n)]:after:hidden";
+
 const Home = () => {
   return (
     <>
       <img src={backdrop} alt="" className="absolute -z-1 right-20 -top-36" />
       <Hero />
-      <Section>
+      <Section variant="narrow">
         <Timeline />
       </Section>
       <Section>
@@ -47,6 +57,13 @@ const Home = () => {
       </Section>
       <Section>
         <h2 className="text-center">Participating Schools</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 max-w-4xl mx-auto">
+          {schools.map((s) => (
+            <div key={s} className={cell}>
+              <h4>{s}</h4>
+            </div>
+          ))}
+        </div>
       </Section>
       <Section>
         <h2>Donate</h2>

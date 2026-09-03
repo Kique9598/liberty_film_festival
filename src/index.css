@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap");
+@import "tailwindcss";
 
 @theme {
   /* ── FONTS ── */
@@ -111,11 +111,15 @@ h1 {
 }
 
 h2 {
-  @apply text-4xl font-cormorant mb-6 font-light;
+  @apply text-4xl font-cormorant mb-6 font-medium;
+}
+
+h4 {
+  @apply text-3xl font-cormorant font-light text-center;
 }
 
 p {
-  @apply mb-4
+  @apply mb-4;
 }
 
 @keyframes timeline-progress {

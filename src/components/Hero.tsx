@@ -1,11 +1,12 @@
 import SprocketHoles from "./SprocketHoles";
 import HeroButton from "./HeroButton";
+import Section from "./Section";
 
 const Hero = () => {
   return (
     <>
       <SprocketHoles />
-      <div className=" flex justify-between items-center py-9 px-10">
+      <Section variant="hero" className=" flex justify-between items-center">
         <div className="flex flex-3/5 flex-col gap-7">
           <h1>The Future of <br /> Cinema Starts Here.</h1>
           <div className="flex items-center gap-2">
@@ -30,7 +31,7 @@ const Hero = () => {
           </div>
         </div>
         <div className="flex-2/5"></div>
-      </div>
+      </Section>
       <SprocketHoles />
     </>
   );
