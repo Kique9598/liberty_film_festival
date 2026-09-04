@@ -22,6 +22,22 @@ const Submit = () => {
           <div className="flex-2/5"></div>
         </div>
       </Section>
+      <Section variant="default">timeline</Section>
+      <Section>Eligibility</Section>
+      <Section>Film Requirments</Section>
+      <Section>What you'll need to provide</Section>
+      <Section>
+        <h2 className="text-center">Ready to Submit?</h2>
+        <p className="text-center">
+          Submissions are handled through FilmFreeway. You'll create a free
+          account there to upload your film and materials.
+        </p>
+        <div className="m-auto">
+          <HeroButton link="https://filmfreeway.com/TheLibertyFilmFestival">
+            Submit via FilmFreeway
+          </HeroButton>
+        </div>
+      </Section>
     </>
   );
 };
