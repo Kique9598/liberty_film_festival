@@ -8,7 +8,7 @@ const Timeline = () => {
     return () => clearInterval(id);
   }, []);
 
-  const target = new Date("2027-02-16T00:00:00");
+  const target = new Date("2027-01-23T00:00:00");
   const diff = Math.max(0, target.getTime() - now);
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
