@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Section from "../components/Section";
 import HeroButton from "../components/HeroButton";
 const DONATE_LINK =
@@ -83,6 +85,34 @@ const wishlistNeeds = [
 ];
 
 const Donate = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (!location.hash) {
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    const id = location.hash.slice(1);
+
+    // Reset to top so the smooth scroll moves downward, not upward
+    window.scrollTo(0, 0);
+
+    let innerFrame = 0;
+    const outerFrame = requestAnimationFrame(() => {
+      innerFrame = requestAnimationFrame(() => {
+        document
+          .getElementById(id)
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    return () => {
+      cancelAnimationFrame(outerFrame);
+      cancelAnimationFrame(innerFrame);
+    };
+  }, [location.pathname, location.hash]);
+
   return (
     <>
       <Section variant="hero">
@@ -129,7 +159,7 @@ const Donate = () => {
         </div>
       </Section>
 
-      <Section>
+      <Section id="donor-tiers" className="scroll-mt-24">
         <div className="flex flex-col gap-10">
           <div className="max-w-2xl">
             <h2>Donor incentives</h2>

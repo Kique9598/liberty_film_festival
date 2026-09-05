@@ -8,6 +8,27 @@ const v_lineStyle = "bg-[#B3A96F] h-1/2 my-auto";
 const h_lineStyle = "bg-[#B3A96F] col-span-3 md:col-span-7 h-[1px]";
 const gridBlockStyle = "w-full aspect-video grid place-items-center p-3";
 
+const DONATE_LINK =
+  "https://seedandspark.com/fund/liberty-film-festival?token=bf0c826a9df594042974045f508da13c0554cdca4c31ad8dddcd3fdaca56844c";
+
+const donateImpact = [
+  {
+    title: "Screenings & venue",
+    description:
+      "Professional screening space, projection, and printed programs.",
+  },
+  {
+    title: "Filmmaker access",
+    description:
+      "Submission support and logistics for undergrad filmmakers across NYC.",
+  },
+  {
+    title: "Industry connections",
+    description:
+      "Panels and programming that connect students with working professionals.",
+  },
+];
+
 const Home = () => {
   return (
     <>
@@ -92,8 +113,37 @@ const Home = () => {
           </div>
         </div>
       </Section>
-      <Section>
-        <h2>Donate</h2>
+      <Section className="bg-[#DCDFD5]">
+        <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2 md:gap-x-8">
+          <div className="flex flex-col gap-6">
+            <h2>Student filmmaking runs on community support.</h2>
+            <p className="mb-0">
+              Liberty Film Festival is entirely student-run and independently
+              funded. Every dollar goes directly toward giving young filmmakers
+              a real venue, a real audience, and real industry access.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <HeroButton link={DONATE_LINK}>Donate on Seed&Spark</HeroButton>
+              <HeroButton to="/donate#donor-tiers" variant="secondary">
+                See donor tiers
+              </HeroButton>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            {donateImpact.map(({ title, description }) => (
+              <div
+                key={title}
+                className="flex flex-col gap-2 rounded-lg border border-[#c8baa8]/50 bg-[#F1ECE7] p-5"
+              >
+                <h4 className="text-left text-xl">{title}</h4>
+                <p className="mb-0 text-sm leading-relaxed text-[#3a312a]">
+                  {description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </Section>
     </>
   );
