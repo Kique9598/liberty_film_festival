@@ -1,12 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import NavLink from "./NavLink.tsx";
 import NavButton from "./NavButton.tsx";
+import { handleSameRouteClick } from "../utils/scroll";
 
 const Header = () => {
+  const { pathname } = useLocation();
+
   return (
     <header className="site-header">
       <div className="site-header-inner">
-        <Link to="/" className="site-logo">
+        <Link
+          to="/"
+          className="site-logo"
+          onClick={() => handleSameRouteClick(pathname, "/")}
+        >
           Liberty Film Festival
         </Link>
 
