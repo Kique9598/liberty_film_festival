@@ -95,9 +95,6 @@ const Home = () => {
       <Section>
         <h2>Donate</h2>
       </Section>
-      <Section className="bg-[#DCDFD5]">
-        <h2>Footer tmp</h2>
-      </Section>
     </>
   );
 };
