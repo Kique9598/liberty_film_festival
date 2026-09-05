@@ -37,7 +37,7 @@ const Donate = () => {
         <div className="flex flex-col gap-10">
           <SectionHeader
             title="Where your donation goes"
-            description="We are building this festival from the ground up. Your support funds the essentials — not overhead — so every contribution has a visible impact on the event."
+            description="We are building this festival from the ground up. Your support funds the essentials, not overhead, so every contribution has a visible impact on the event."
           />
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
             {impactAreas.map(({ title, description }) => (
@@ -109,7 +109,7 @@ const Donate = () => {
         <div className="flex max-w-2xl flex-col gap-8">
           <SectionHeader
             title="Wishlist"
-            description="We also maintain a wishlist on Seed&Spark for cash pledges and loan items — specific festival needs you can help cover directly."
+            description="We also maintain a wishlist on Seed&Spark for cash pledges and loan items."
           />
 
           <ul className="flex flex-col border-t border-parch-300">

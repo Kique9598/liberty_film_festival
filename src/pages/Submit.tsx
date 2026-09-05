@@ -29,7 +29,7 @@ const Submit = () => {
           }
         >
           <p className="mb-0">
-            Read everything below before you head to FilmFreeway — it covers
+            Read everything below before you head to FilmFreeway. It covers
             eligibility, student verification, film requirements, and the
             materials you'll need. Submission is free.
           </p>
@@ -75,7 +75,7 @@ const Submit = () => {
           />
           <BulletList items={filmRequirements} />
           <p className="callout-emphasis mb-0">
-            10 minutes max — including opening titles and end credits.
+            10 minutes max, including opening titles and end credits.
           </p>
         </div>
       </Section>
@@ -116,7 +116,7 @@ const Submit = () => {
             <div className="mt-6 flex flex-col gap-4 text-sm leading-relaxed text-muted">
               <p className="mb-0">
                 <span className="font-medium text-body">
-                  YouTube & online exhibition —
+                  YouTube & online exhibition,
                 </span>{" "}
                 Liberty Film Festival may invite selected filmmakers to have
                 their films featured on the festival's official YouTube channel

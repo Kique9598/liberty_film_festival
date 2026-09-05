@@ -4,14 +4,7 @@ const gridBlockStyle =
   "grid w-full place-items-center p-2 aspect-video sm:p-3";
 
 const schools = [
-  "Columbia",
-  "Pratt",
-  "Fordham",
-  "NYU",
-  "Pace",
-  "SVA",
-  "Brooklyn College",
-  "More",
+  "Columbia", "NYU", "Fordham", "PACE", "Pratt", "Sarah", "Lawrence", "SVA", "Brooklyn", "College", "The New School"
 ];
 
 const ParticipatingSchools = () => {
@@ -56,6 +49,24 @@ const ParticipatingSchools = () => {
 
         <div className={gridBlockStyle}>
           <h4>{schools[7]}</h4>
+        </div>
+
+        <div className={vLineStyle} />
+        <div className={hLineStyle} />
+
+        <div className={gridBlockStyle}>
+          <h4>{schools[8]}</h4>
+        </div>
+        <div className={vLineStyle} />
+
+        <div className={gridBlockStyle}>
+          <h4>{schools[9]}</h4>
+        </div>
+        <div className={`hidden md:block ${vLineStyle}`} />
+        <div className={`md:hidden ${hLineStyle}`} />
+
+        <div className={gridBlockStyle}>
+          <h4>{schools[10]}</h4>
         </div>
       </div>
     </>

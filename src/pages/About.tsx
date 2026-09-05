@@ -42,7 +42,7 @@ const About = () => {
         >
           <p className="mb-0">
             Liberty Film Festival exists to give undergraduate filmmakers a real
-            stage in New York City — connecting student voices with audiences,
+            stage in New York City, connecting student voices with audiences,
             peers, and industry professionals across the city's leading
             universities.
           </p>
