@@ -4,7 +4,7 @@ const SprocketHoles = () => {
   return (
     <div className="flex gap-5 px-4">
       {Array.from({ length: num }, (_, i) => (
-        <div key={i} className="bg-[#B4C5B3] rounded-xs h-5 flex-1"></div>
+        <div key={i} className="h-5 flex-1 rounded-xs bg-brand/70" />
       ))}
     </div>
   );

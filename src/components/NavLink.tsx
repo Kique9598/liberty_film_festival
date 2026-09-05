@@ -1,4 +1,4 @@
-import React, { type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { NavLink as RouterNavLink } from "react-router-dom";
 
 interface NavLinkProps {
@@ -11,7 +11,7 @@ const NavLink = ({ to, children }: NavLinkProps) => {
     <RouterNavLink
       to={to}
       className={({ isActive }) =>
-        `px-3 py-1.5 font-medium ${isActive ? "text-black" : "text-[#B3B3B3]"}`
+        `nav-link ${isActive ? "nav-link-active" : ""}`
       }
     >
       {children}

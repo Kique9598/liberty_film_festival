@@ -1,21 +1,21 @@
 import { Link } from "react-router-dom";
+import { CONTACT_EMAIL } from "../constants/links";
 
-const sectionLabelClass =
-  "mb-3 block font-sans text-[11px] font-medium uppercase tracking-[0.14em] text-[#8a8578]";
+const sectionLabelClass = "label-caps mb-3 block";
 
 const footerLinkClass =
-  "font-cormorant text-lg text-[#2a2420] transition-colors hover:text-[#635748]";
+  "font-cormorant text-base text-ink transition-colors hover:text-muted sm:text-lg";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-[#e6ddd4] bg-[#F1ECE7]">
+    <footer className="border-t border-parch-300 bg-parch-200">
       <div className="mx-auto max-w-6xl px-6 py-8 md:px-10 md:py-10">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr] lg:gap-10">
           <div className="flex flex-col gap-3">
-            <span className="font-cormorant text-2xl font-semibold text-[#2a2420]">
+            <span className="font-cormorant text-xl font-semibold text-ink sm:text-2xl">
               Liberty Film Festival
             </span>
-            <p className="mb-0 max-w-xs text-sm leading-relaxed text-[#635748]">
+            <p className="mb-0 max-w-xs text-sm leading-relaxed text-muted">
               An intercollegiate film festival uniting New York City's top
               universities to celebrate the next generation of student
               filmmakers.
@@ -40,27 +40,21 @@ const Footer = () => {
           <div>
             <span className={sectionLabelClass}>Contact</span>
             <div className="flex flex-col gap-2">
-              <a
-                href="mailto:hello@libertyfilmfest.org"
-                className={footerLinkClass}
-              >
-                hello@libertyfilmfest.org
+              <a href={`mailto:${CONTACT_EMAIL}`} className={footerLinkClass}>
+                {CONTACT_EMAIL}
               </a>
-              <a
-                href="#"
-                className={footerLinkClass}
-              >
+              <a href="#" className={footerLinkClass}>
                 Instagram
               </a>
             </div>
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-2 border-t border-[#e6ddd4] pt-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="mb-0 font-cormorant text-sm text-[#8a8578]">
+        <div className="mt-8 flex flex-col gap-2 border-t border-parch-300 pt-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="mb-0 font-cormorant text-sm text-subtle">
             © 2027 Liberty Film Festival. All rights reserved.
           </p>
-          <p className="mb-0 font-cormorant text-sm text-[#8a8578]">
+          <p className="mb-0 font-cormorant text-sm text-subtle">
             Made by students, for students.
           </p>
         </div>
