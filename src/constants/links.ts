@@ -7,3 +7,5 @@ export const FILMFREEWAY_LINK =
 export const CONTACT_EMAIL = "hello@libertyfilmfest.org";
 
 export const SUBMISSION_DEADLINE = "2027-01-23T00:00:00";
+
+export const PROMO_VIDEO_ID = "o2Dj57raF-Q";

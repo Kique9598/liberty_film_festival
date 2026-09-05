@@ -186,6 +186,18 @@ p {
     @apply aspect-video w-full rounded-lg bg-parch-300;
   }
 
+  .video-player {
+    @apply relative aspect-video w-full overflow-hidden rounded-lg border border-parch-400/50 bg-parch-300 shadow-sm;
+  }
+
+  .video-player-embed {
+    @apply absolute inset-0 h-full w-full border-0;
+  }
+
+  .video-player iframe {
+    @apply h-full w-full border-0;
+  }
+
   .surface-panel {
     @apply rounded-lg border border-parch-400 bg-parch-50;
   }

@@ -4,6 +4,9 @@ import PageHero from "../components/PageHero";
 import SectionHeader from "../components/SectionHeader";
 import FounderCard from "../components/FounderCard";
 import SponsorsSection from "../components/SponsorsSection";
+import TwoColumnMedia from "../components/TwoColumnMedia";
+import VideoPlayer from "../components/VideoPlayer";
+import { PROMO_VIDEO_ID } from "../constants/links";
 import { founders, team } from "../data/team";
 
 const About = () => {
@@ -28,26 +31,28 @@ const About = () => {
       </Section>
 
       <Section>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-x-10">
-          <div className="flex flex-col gap-6 md:col-start-1 md:row-start-1 md:row-span-2 md:justify-center">
-            <h2 className="mb-0">Our mission</h2>
-            <p className="mb-0">
-              Liberty Film Festival exists to give undergraduate filmmakers a
-              real stage in New York City — connecting student voices with
-              audiences, peers, and industry professionals across the city's
-              leading universities.
-            </p>
-            <p className="mb-0">
-              We are building a city-wide celebration of short film that bridges
-              the gap between academia and the professional world, launching the
-              next generation of independent filmmakers through curated
-              programming, industry access, and community support.
-            </p>
-          </div>
-          <div className="flex items-center justify-center md:col-start-2 md:row-start-1 md:row-span-2">
-            <div className="media-placeholder max-w-full md:max-w-[520px]" />
-          </div>
-        </div>
+        <TwoColumnMedia
+          title="Our mission"
+          media={
+            <VideoPlayer
+              videoId={PROMO_VIDEO_ID}
+              className="max-w-full md:max-w-[520px]"
+            />
+          }
+        >
+          <p className="mb-0">
+            Liberty Film Festival exists to give undergraduate filmmakers a real
+            stage in New York City — connecting student voices with audiences,
+            peers, and industry professionals across the city's leading
+            universities.
+          </p>
+          <p className="mb-0">
+            We are building a city-wide celebration of short film that bridges
+            the gap between academia and the professional world, launching the
+            next generation of independent filmmakers through curated
+            programming, industry access, and community support.
+          </p>
+        </TwoColumnMedia>
       </Section>
 
       <Section>

@@ -5,8 +5,9 @@ import ParticipatingSchools from "../components/ParticipatingSchools";
 import HeroButton from "../components/HeroButton";
 import InfoCard from "../components/InfoCard";
 import TwoColumnMedia from "../components/TwoColumnMedia";
+import VideoPlayer from "../components/VideoPlayer";
 import backdrop from "../assets/backdrop.png";
-import { FILMFREEWAY_LINK, DONATE_LINK } from "../constants/links";
+import { FILMFREEWAY_LINK, DONATE_LINK, PROMO_VIDEO_ID } from "../constants/links";
 import { submissionHighlights } from "../data/homeContent";
 import { impactAreasShort } from "../data/impactAreas";
 
@@ -48,7 +49,12 @@ const Home = () => {
       <Section variant="alt">
         <TwoColumnMedia
           title="A City-Wide Celebration of Student Filmmaking"
-          mediaClassName="media-placeholder max-w-full md:max-w-[455px]"
+          media={
+            <VideoPlayer
+              videoId={PROMO_VIDEO_ID}
+              className="max-w-full md:max-w-[455px]"
+            />
+          }
           actions={<HeroButton to="/about">Learn More</HeroButton>}
         >
           <p className="mb-0">

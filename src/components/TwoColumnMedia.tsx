@@ -4,6 +4,7 @@ type TwoColumnMediaProps = {
   title: string;
   children: ReactNode;
   actions?: ReactNode;
+  media?: ReactNode;
   mediaClassName?: string;
   reverse?: boolean;
 };
@@ -12,6 +13,7 @@ const TwoColumnMedia = ({
   title,
   children,
   actions,
+  media,
   mediaClassName = "media-placeholder max-w-[520px]",
   reverse = false,
 }: TwoColumnMediaProps) => {
@@ -24,17 +26,13 @@ const TwoColumnMedia = ({
 
   return (
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-x-10">
-      <div
-        className={`flex flex-col gap-6 md:justify-center ${textOrder}`}
-      >
+      <div className={`flex flex-col gap-6 md:justify-center ${textOrder}`}>
         <h2 className="mb-0">{title}</h2>
         {children}
         {actions}
       </div>
-      <div
-        className={`flex items-center justify-center ${mediaOrder}`}
-      >
-        <div className={mediaClassName} />
+      <div className={`flex items-center justify-center ${mediaOrder}`}>
+        {media ?? <div className={mediaClassName} />}
       </div>
     </div>
   );
