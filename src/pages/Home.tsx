@@ -1,12 +1,9 @@
 import Hero from "../components/Hero";
 import Section from "../components/Section";
 import Timeline from "../components/Timeline";
+import ParticipatingSchools from "../components/ParticipatingSchools";
 import backdrop from "../assets/backdrop.png";
 import HeroButton from "../components/HeroButton";
-
-const v_lineStyle = "bg-[#B3A96F] h-1/2 my-auto";
-const h_lineStyle = "bg-[#B3A96F] col-span-3 md:col-span-7 h-[1px]";
-const gridBlockStyle = "w-full aspect-video grid place-items-center p-3";
 
 const DONATE_LINK =
   "https://seedandspark.com/fund/liberty-film-festival?token=bf0c826a9df594042974045f508da13c0554cdca4c31ad8dddcd3fdaca56844c";
@@ -114,47 +111,7 @@ const Home = () => {
         </div>
       </Section>
       <Section>
-        <h2 className="text-center">Participating Schools</h2>
-        <div className="grid grid-cols-[1fr_1px_1fr] md:grid-cols-[1fr_1px_1fr_1px_1fr_1px_1fr] max-w-4xl m-auto">
-          <div className={`${gridBlockStyle}`}>
-            <h4>Columbia</h4>
-          </div>
-          <div className={`${v_lineStyle}`}></div>
-          <div className={`${gridBlockStyle}`}>
-            <h4>Pratt</h4>
-          </div>
-          <div className={`hidden md:block ${v_lineStyle}`}></div>
-          <div className={`md:hidden ${h_lineStyle}`}></div>
-          <div className={`${gridBlockStyle}`}>
-            <h4>Fordham</h4>
-          </div>
-          <div className={`${v_lineStyle}`}></div>
-          <div className={`${gridBlockStyle}`}>
-            <h4>NYU</h4>
-          </div>
-          <div className={`${v_lineStyle}`}></div>
-          <div className={`${h_lineStyle}`}></div>
-
-          <div className={`${gridBlockStyle}`}>
-            <h4>Pace</h4>
-          </div>
-          <div className={`${v_lineStyle}`}></div>
-
-          <div className={`${gridBlockStyle}`}>
-            <h4>SVA</h4>
-          </div>
-          <div className={`hidden md:block ${v_lineStyle}`}></div>
-          <div className={`md:hidden ${h_lineStyle}`}></div>
-
-          <div className={`${gridBlockStyle}`}>
-            <h4>Brooklyn College</h4>
-          </div>
-          <div className={`${v_lineStyle}`}></div>
-
-          <div className={`${gridBlockStyle}`}>
-            <h4>More</h4>
-          </div>
-        </div>
+        <ParticipatingSchools />
       </Section>
       <Section className="bg-[#DCDFD5]">
         <div className="flex flex-col gap-10">
