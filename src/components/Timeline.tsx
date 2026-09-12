@@ -103,7 +103,7 @@ const Timeline = () => {
                 onMouseLeave={() => setHovered(null)}
                 className="group relative flex flex-1 flex-col gap-2 hover:z-20"
               >
-                <div className="absolute -inset-y-1 -inset-x-2 z-0 rounded-md bg-[#5D745D] opacity-0 shadow-[0px_0px_4px_rgba(0,0,0,0.35)] transition-opacity duration-200 group-hover:opacity-100" />
+                <div className="absolute -inset-y-1 -inset-x-2 z-0 rounded-md bg-[#5D745D] opacity-0 shadow-[0px_0px_4px_rgba(0,0,0,0.35)]  duration-200 group-hover:opacity-100" />
 
                 <span className={`relative z-10 ${alignClass[p.align]}`}>
                   {p.label}
