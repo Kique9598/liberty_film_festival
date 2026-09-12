@@ -7,7 +7,11 @@ import InfoCard from "../components/InfoCard";
 import TwoColumnMedia from "../components/TwoColumnMedia";
 import VideoPlayer from "../components/VideoPlayer";
 import backdrop from "../assets/backdrop.png";
-import { FILMFREEWAY_LINK, DONATE_LINK, PROMO_VIDEO_ID } from "../constants/links";
+import {
+  FILMFREEWAY_LINK,
+  DONATE_LINK,
+  PROMO_VIDEO_ID,
+} from "../constants/links";
 import { submissionHighlights } from "../data/homeContent";
 import { impactAreasShort } from "../data/impactAreas";
 
@@ -20,9 +24,7 @@ const Home = () => {
         className="pointer-events-none absolute -top-24 -z-1 right-0 hidden w-48 opacity-90 sm:block md:-top-36 md:right-20 md:w-auto"
       />
       <Hero />
-      <Section variant="narrow">
-        <Timeline />
-      </Section>
+      <Timeline />
       <Section>
         <div className="flex flex-col gap-6">
           <h2 className="mb-0">Submission requirements</h2>

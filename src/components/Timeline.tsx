@@ -1,5 +1,24 @@
 import { useEffect, useState } from "react";
 import { SUBMISSION_DEADLINE } from "../constants/links";
+import Section from "./Section";
+
+function Tooltip({ text }: { text: string }) {
+  const [shown, setShown] = useState(false);
+  useEffect(() => {
+    // next frame: lets the element paint at the hidden state first, then animate in
+    const id = requestAnimationFrame(() => setShown(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
+  return (
+    <span
+      className={`pointer-events-none absolute bottom-full mb-2 right-0 whitespace-nowrap text-sm text-[#D4C9B0] transition-all duration-200 ${
+        shown ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
+      }`}
+    >
+      {text}
+    </span>
+  );
+}
 
 const Timeline = () => {
   const [now, setNow] = useState(Date.now());
@@ -20,53 +39,84 @@ const Timeline = () => {
     return time < 10 ? "0" + time : "" + time;
   }
 
+  const phases = [
+    {
+      label: "Submissions",
+      align: "left",
+      active: true,
+      tip: "Enter your film for free via FilmFreeway through Jan 23.",
+    },
+    {
+      label: "Judging",
+      align: "center",
+      active: false,
+      tip: "A panel of student and industry jurors scores every entry.",
+    },
+    {
+      label: "Lineup Drop",
+      align: "center",
+      active: false,
+      tip: "The official selection is announced publicly.",
+    },
+    {
+      label: "Showtime",
+      align: "right",
+      active: false,
+      tip: "Feb 12, 2027 · 6:00 PM EST — the live NYC screening.",
+    },
+  ] as const;
+
+  const alignClass = {
+    left: "text-left",
+    center: "text-center",
+    right: "text-right",
+  } as const;
+
+  const [hovered, setHovered] = useState<number | null>(null);
+
   return (
-    <div className="surface-panel flex flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:gap-6 sm:px-6 sm:py-2">
-      <div className="hidden flex-col gap-1 lg:flex">
-        <span className="text-sm">Call for Films</span>
-        <span className="text-xs text-muted">Submit for your school</span>
-      </div>
-
-      <div className="flex flex-1 flex-col gap-2 text-sm">
-        <div className="flex">
-          <span className="flex flex-1">Submissions</span>
-          <span className="flex flex-1 justify-center text-subtle">
-            Processing
-          </span>
-          <span className="flex flex-1 justify-center text-subtle">
-            Lineup Drop
-          </span>
-          <span className="flex flex-1 justify-end text-subtle">Showtime</span>
-        </div>
-        <div className="flex gap-1">
-          <div className="h-1 flex-1 overflow-hidden rounded-full bg-gold-200">
-            <div className="timeline-progress-fill h-full rounded-full bg-gold-500" />
+    <Section className="bg-gradient-to-r from-[#3D573E] to-[#5D745D]">
+      <div className="flex flex-col gap-2">
+        <span className="text-[#D4C9B0]">Submissions close in</span>
+        <div className="flex gap-10 items-center">
+          <div className="flex gap-3">
+            {[
+              { value: days, label: "DAY" },
+              { value: hours, label: "HRS" },
+              { value: minutes, label: "MIN" },
+              { value: seconds, label: "SEC" },
+            ].map(({ value, label }) => (
+              <div key={label} className="flex gap-1 items-end">
+                <span className="text-6xl text-white">{formatTime(value)}</span>
+                <span className="text-[#D4C9B0]">{label}</span>
+              </div>
+            ))}
           </div>
-          <div className="h-1 flex-1 rounded-full bg-gold-200" />
-          <div className="h-1 flex-1 rounded-full bg-gold-200" />
-          <div className="h-1 flex-1 rounded-full bg-gold-200" />
-        </div>
-      </div>
+          <div className="relative flex flex-1 items-center gap-1 rounded-md bg-[#5D745D] px-4 py-2 text-white  select-none cursor-pointer">
+            {hovered !== null && (
+              <Tooltip key={hovered} text={phases[hovered].tip} />
+            )}
+            {phases.map((p, i) => (
+              <div
+                key={p.label}
+                onMouseEnter={() => setHovered(i)}
+                onMouseLeave={() => setHovered(null)}
+                className="group relative flex flex-1 flex-col gap-2 hover:z-20"
+              >
+                <div className="absolute -inset-y-1 -inset-x-2 z-0 rounded-md bg-[#5D745D] opacity-0 shadow-[0px_0px_4px_rgba(0,0,0,0.35)] transition-opacity duration-200 group-hover:opacity-100" />
 
-      <div className="hidden items-center gap-3 md:flex">
-        <span className="text-right text-sm text-muted">
-          Submissions <br /> close in
-        </span>
-        <div className="flex gap-3 rounded-lg bg-parch-100 px-2 py-1 sm:gap-4">
-          {[
-            { value: days, label: "DAY" },
-            { value: hours, label: "HRS" },
-            { value: minutes, label: "MIN" },
-            { value: seconds, label: "SEC" },
-          ].map(({ value, label }) => (
-            <div key={label} className="flex flex-col items-center">
-              <span className="font-bold">{formatTime(value)}</span>
-              <span className="text-xs text-subtle">{label}</span>
-            </div>
-          ))}
+                <span className={`relative z-10 ${alignClass[p.align]}`}>
+                  {p.label}
+                </span>
+                <div
+                  className={`relative z-10 h-1 rounded-full ${p.active ? "bg-[#A8945C]" : "bg-[#E4D9C0]"}`}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </Section>
   );
 };
 
