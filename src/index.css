@@ -235,7 +235,11 @@ p {
   }
 
   .site-header {
-    @apply sticky top-0 z-50 bg-parch-200/95 backdrop-blur-sm;
+    @apply sticky top-0 z-50 bg-transparent transition-all duration-1000;
+  }
+
+  .site-header--scrolled {
+    @apply bg-parch-200/95 backdrop-blur-sm;
   }
 
   .site-header-inner {

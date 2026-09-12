@@ -2,12 +2,24 @@ import { Link, useLocation } from "react-router-dom";
 import NavLink from "./NavLink.tsx";
 import NavButton from "./NavButton.tsx";
 import { handleSameRouteClick } from "../utils/scroll";
+import { useEffect, useState } from "react";
 
 const Header = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 56); // threshold in px
+    onScroll(); // set correct state on mount (e.g. reloaded mid-page)
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const { pathname } = useLocation();
 
   return (
-    <header className="site-header">
+    <header
+      className={`site-header ${scrolled ? "site-header--scrolled" : ""}`}
+    >
       <div className="site-header-inner">
         <Link
           to="/"

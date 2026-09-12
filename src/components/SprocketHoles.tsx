@@ -13,7 +13,7 @@ const SprocketHoles = ({ variant }: SprocketProps) => {
       {Array.from({ length: num }, (_, i) => (
         <div
           key={i}
-          className={`h-5 flex-1 ${variant != "top" ? "rounded-b-xs" : ""} ${variant != "bottom" ? "rounded-t-xs" : ""} bg-[#7B9C7C]`}
+          className={`h-5 flex-1 ${variant != "top" ? "rounded-b-xs" : ""} ${variant != "bottom" ? "rounded-t-xs" : ""} bg-[#5D745D]`}
         />
       ))}
     </div>
