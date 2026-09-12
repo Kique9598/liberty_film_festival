@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { CONTACT_EMAIL } from "../constants/links";
+import SprocketHoles from "./SprocketHoles";
 
 const sectionLabelClass = "label-caps mb-3 block";
 

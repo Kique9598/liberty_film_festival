@@ -6,11 +6,13 @@ import Home from "./pages/Home.tsx";
 import About from "./pages/About.tsx";
 import Submit from "./pages/Submit.tsx";
 import Donate from "./pages/Donate.tsx";
+import SprocketHoles from "./components/SprocketHoles.tsx";
 
 const App = () => {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <SprocketHoles variant="bottom" />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -19,6 +21,7 @@ const App = () => {
         <Route path="/donate" element={<Donate />} />
       </Routes>
       <Footer />
+      <SprocketHoles variant="top" />
     </BrowserRouter>
   );
 };

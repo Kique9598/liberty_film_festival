@@ -14,6 +14,7 @@ import {
 } from "../constants/links";
 import { submissionHighlights } from "../data/homeContent";
 import { impactAreasShort } from "../data/impactAreas";
+import SprocketHoles from "../components/SprocketHoles";
 
 const Home = () => {
   return (

@@ -11,7 +11,7 @@ function Tooltip({ text }: { text: string }) {
   }, []);
   return (
     <span
-      className={`pointer-events-none absolute bottom-full mb-2 right-0 whitespace-nowrap text-sm text-[#D4C9B0] transition-all duration-200 ${
+      className={`pointer-events-none absolute bottom-full mb-2 right-0 whitespace-nowrap text-[10px] xs:text-sm sm:text-base text-[#D4C9B0] transition-all duration-200 ${
         shown ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
       }`}
     >
@@ -77,8 +77,8 @@ const Timeline = () => {
   return (
     <Section className="bg-gradient-to-r from-[#3D573E] to-[#5D745D]">
       <div className="flex flex-col gap-2">
-        <span className="text-[#D4C9B0]">Submissions close in</span>
-        <div className="flex gap-10 items-center">
+        <span className="text-[#D4C9B0] mx-auto lg:mx-0">Submissions close in</span>
+        <div className="flex flex-col lg:flex-row gap-16 items-center">
           <div className="flex gap-3">
             {[
               { value: days, label: "DAY" },
@@ -87,12 +87,12 @@ const Timeline = () => {
               { value: seconds, label: "SEC" },
             ].map(({ value, label }) => (
               <div key={label} className="flex gap-1 items-end">
-                <span className="text-6xl text-white">{formatTime(value)}</span>
+                <span className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl text-white">{formatTime(value)}</span>
                 <span className="text-[#D4C9B0]">{label}</span>
               </div>
             ))}
           </div>
-          <div className="relative flex flex-1 items-center gap-1 rounded-md bg-[#5D745D] px-4 py-2 text-white  select-none cursor-pointer">
+          <div className="relative flex w-full lg:flex-1 items-center gap-1 rounded-md bg-[#5D745D] px-4 py-2 text-white  select-none cursor-pointer">
             {hovered !== null && (
               <Tooltip key={hovered} text={phases[hovered].tip} />
             )}
@@ -101,11 +101,11 @@ const Timeline = () => {
                 key={p.label}
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
-                className="group relative flex flex-1 flex-col gap-2 hover:z-20"
+                className="group relative flex flex-1 hover:flex-1/50 duration-200 flex-col gap-2 hover:z-20"
               >
-                <div className="absolute -inset-y-1 -inset-x-2 z-0 rounded-md bg-[#5D745D] opacity-0 shadow-[0px_0px_4px_rgba(0,0,0,0.35)]  duration-200 group-hover:opacity-100" />
+                {/* <div className="absolute -inset-y-1 -inset-x-2 z-0 rounded-md bg-[#5D745D] opacity-0 shadow-[0px_0px_4px_rgba(0,0,0,0.35)]  duration-200 group-hover:opacity-100" /> */}
 
-                <span className={`relative z-10 ${alignClass[p.align]}`}>
+                <span className={`relative z-10 text-[10px] xs:text-sm md:text-base ${alignClass[p.align]}`}>
                   {p.label}
                 </span>
                 <div
