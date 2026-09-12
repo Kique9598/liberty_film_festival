@@ -215,7 +215,11 @@ p {
   }
 
   .btn-primary {
-    @apply flex w-fit items-center gap-2 rounded-lg border border-brand bg-brand px-4 py-2 text-sm font-medium text-white transition-colors hover:border-brand-hover hover:bg-brand-hover;
+    @apply flex w-fit items-center gap-2 rounded-md border border-[#5D745D] bg-[#5D745D] px-7 py-3.5 text-sm font-medium text-white transition-all hover:-translate-y-1 duration-200 hover:border-[#677E67] hover:bg-[#677E67] hover:shadow-md;
+  }
+
+  .btn-content {
+    @apply flex items-center gap-2 transition-transform duration-200 group-hover:-translate-y-0.5;
   }
 
   .btn-secondary {
