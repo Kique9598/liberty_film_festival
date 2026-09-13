@@ -215,7 +215,7 @@ h4 {
   }
 
   .btn-content {
-    @apply flex items-center gap-2 transition-transform duration-200 group-hover:-translate-y-0.5;
+    @apply flex items-center gap-2 transition-transform duration-200 group-hover:-translate-y-[0.0625rem];
   }
 
   .btn-secondary {

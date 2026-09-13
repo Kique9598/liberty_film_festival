@@ -77,7 +77,9 @@ const Timeline = () => {
   return (
     <Section className="bg-gradient-to-r from-[#3D573E] to-[#5D745D]">
       <div className="flex flex-col gap-2">
-        <span className="text-[#D4C9B0] mx-auto lg:mx-0">Submissions close in</span>
+        <span className="text-[#D4C9B0] mx-auto lg:mx-0">
+          Submissions close in
+        </span>
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           <div className="flex gap-3">
             {[
@@ -87,7 +89,9 @@ const Timeline = () => {
               { value: seconds, label: "SEC" },
             ].map(({ value, label }) => (
               <div key={label} className="flex gap-1 items-end">
-                <span className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl text-white">{formatTime(value)}</span>
+                <span className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl text-white">
+                  {formatTime(value)}
+                </span>
                 <span className="text-[#D4C9B0]">{label}</span>
               </div>
             ))}
@@ -105,7 +109,9 @@ const Timeline = () => {
               >
                 {/* <div className="absolute -inset-y-1 -inset-x-2 z-0 rounded-md bg-[#5D745D] opacity-0 shadow-[0px_0px_4px_rgba(0,0,0,0.35)]  duration-200 group-hover:opacity-100" /> */}
 
-                <span className={`relative z-10 text-[10px] xs:text-sm md:text-base ${alignClass[p.align]}`}>
+                <span
+                  className={`relative z-10 text-[10px] xs:text-sm md:text-base ${alignClass[p.align]}`}
+                >
                   {p.label}
                 </span>
                 <div

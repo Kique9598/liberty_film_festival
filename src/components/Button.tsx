@@ -6,10 +6,17 @@ import Icon from "./Icon";
 type ButtonProps = {
   label: string;
   ghost?: boolean;
+  variant?: "default" | "gold";
 } & ({ to: string; link?: never } | { link: string; to?: never });
 
-const Button = ({ to, link, label, ghost = false }: ButtonProps) => {
-  const classes = `flex w-fit items-center gap-2 rounded-md border border-[#5D745D] ${ghost ? "text-[#5D745D]" : "bg-[#5D745D] hover:bg-[#677E67] text-white"} px-7 py-3.5 text-sm font-medium  transition-all hover:-translate-y-1 duration-200 hover:border-[#677E67]  hover:shadow-md`;
+const Button = ({
+  to,
+  link,
+  label,
+  ghost = false,
+  variant = "default",
+}: ButtonProps) => {
+  const classes = `flex w-fit items-center gap-2 rounded-md border ${variant === "gold" ? "border-[#A8945C]" : "border-[#5D745D]"} ${ghost ? "text-[#5D745D]" : variant === "gold" ? "bg-[#A8945C] text-[#2A2420]" : "bg-[#5D745D] hover:bg-[#677E67] hover:border-[#677E67] text-white"} px-7 py-3.5 text-sm font-medium  transition-all hover:-translate-y-1 duration-200   hover:shadow-md`;
 
   return to ? (
     <RouterNavLink to={to} className={`${classes} group`}>
