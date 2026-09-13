@@ -1,8 +1,8 @@
 type SectionProps = {
   children?: React.ReactNode;
   className?: string;
-  id?: string;
   variant?: "default" | "narrow" | "hero" | "banner" | "alt" | "prose";
+  row?: boolean;
   scrollMargin?: boolean;
 };
 
@@ -18,19 +18,17 @@ const containerVariants = {
 const Section = ({
   children,
   className = "",
-  id,
   variant = "default",
+  row = false,
   scrollMargin = false,
 }: SectionProps) => {
-  const isAlt = variant === "alt";
   const scrollClass = scrollMargin ? "scroll-mt-24" : "";
 
   return (
-    <section
-      id={id}
-      className={`w-full ${isAlt ? "bg-section-alt" : ""} ${scrollClass} ${className}`}
-    >
-      <div className={`mx-auto flex flex-col ${containerVariants[variant]}`}>
+    <section className={`w-full ${scrollClass} ${className}`}>
+      <div
+        className={`mx-auto flex flex-col ${containerVariants[variant]} ${row ? "gap-10 lg:flex-row" : "gap-4"}`}
+      >
         {children}
       </div>
     </section>

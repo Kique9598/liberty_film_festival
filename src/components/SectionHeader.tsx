@@ -9,7 +9,7 @@ const SectionHeader = ({
   title,
   description,
   centered = false,
-  showDivider = false,
+  showDivider = true,
 }: SectionHeaderProps) => {
   const align = centered ? "items-center text-center" : "items-start text-left";
 

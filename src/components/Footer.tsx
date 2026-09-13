@@ -9,7 +9,7 @@ const footerLinkClass =
 
 const Footer = () => {
   return (
-    <footer className="border-t border-parch-300 bg-parch-200">
+    <footer className="border-t border-parch-300">
       <div className="mx-auto max-w-6xl px-6 py-8 md:px-10 md:py-10">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr] lg:gap-10">
           <div className="flex flex-col gap-3">

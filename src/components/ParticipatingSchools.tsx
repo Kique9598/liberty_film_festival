@@ -4,7 +4,7 @@ const gridBlockStyle =
   "grid w-full place-items-center p-2 aspect-video sm:p-3";
 
 const schools = [
-  "Columbia", "NYU", "Fordham", "PACE", "Pratt", "Sarah", "Lawrence", "SVA", "Brooklyn", "College", "The New School"
+  "Columbia", "NYU", "Fordham", "PACE", "Pratt", "Sarah", "Lawrence", "SVA", "Brooklyn College", "The New School"
 ];
 
 const ParticipatingSchools = () => {

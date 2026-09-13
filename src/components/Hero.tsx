@@ -1,5 +1,5 @@
 import SprocketHoles from "./SprocketHoles";
-import HeroButton from "./HeroButton";
+import Button from "./Button";
 import PageHero from "./PageHero";
 import Section from "./Section";
 
@@ -12,7 +12,7 @@ const Hero = () => {
             The Future of <br className="hidden sm:block" /> Cinema Starts Here.
           </>
         }
-        actions={<HeroButton to="/submit">Submit a Film</HeroButton>}
+        actions={<Button to="/submit" label="Submit a Film" />}
       >
         <div className="flex flex-wrap items-center gap-2 text-sm sm:text-base">
           <span>date*</span>

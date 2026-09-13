@@ -1,4 +1,4 @@
-import HeroButton from "../components/HeroButton";
+import HeroButton from "../components/Button";
 import Section from "../components/Section";
 import PageHero from "../components/PageHero";
 import SectionHeader from "../components/SectionHeader";

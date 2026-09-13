@@ -110,7 +110,7 @@
 }
 
 body {
-  @apply bg-parch-200 text-ink antialiased;
+  @apply bg-[#E3E1D5] text-ink antialiased;
 }
 
 h1 {
@@ -118,7 +118,7 @@ h1 {
 }
 
 h2 {
-  @apply mb-6 font-cormorant text-3xl font-medium sm:text-4xl;
+  @apply font-cormorant text-3xl font-medium sm:text-4xl;
 }
 
 h3 {
@@ -126,11 +126,7 @@ h3 {
 }
 
 h4 {
-  @apply text-center font-cormorant text-2xl font-light sm:text-3xl;
-}
-
-p {
-  @apply mb-4;
+  @apply font-cormorant text-2xl font-light sm:text-3xl;
 }
 
 @layer components {
@@ -239,7 +235,7 @@ p {
   }
 
   .site-header--scrolled {
-    @apply bg-parch-200/95 backdrop-blur-sm;
+    @apply bg-[#E3E1D5]/85 backdrop-blur-sm;
   }
 
   .site-header-inner {

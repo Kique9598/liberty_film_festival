@@ -1,6 +1,7 @@
 type InfoCardProps = {
   title: string;
   children: React.ReactNode;
+  className?: string;
   variant?: "default" | "light" | "highlight";
   titleSize?: "md" | "lg";
 };
@@ -19,11 +20,14 @@ const titleSizeClasses = {
 const InfoCard = ({
   title,
   children,
+  className = "",
   variant = "default",
   titleSize = "md",
 }: InfoCardProps) => {
   return (
-    <div className={`flex h-full flex-col gap-2 ${variantClasses[variant]}`}>
+    <div
+      className={`flex h-full flex-col gap-2 ${variantClasses[variant]} ${className}`}
+    >
       <h4 className={`text-left ${titleSizeClasses[titleSize]}`}>{title}</h4>
       {children}
     </div>

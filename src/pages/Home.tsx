@@ -2,7 +2,7 @@ import Hero from "../components/Hero";
 import Section from "../components/Section";
 import Timeline from "../components/Timeline";
 import ParticipatingSchools from "../components/ParticipatingSchools";
-import HeroButton from "../components/HeroButton";
+import Button from "../components/Button";
 import InfoCard from "../components/InfoCard";
 import TwoColumnMedia from "../components/TwoColumnMedia";
 import VideoPlayer from "../components/VideoPlayer";
@@ -14,7 +14,8 @@ import {
 } from "../constants/links";
 import { submissionHighlights } from "../data/homeContent";
 import { impactAreasShort } from "../data/impactAreas";
-import SprocketHoles from "../components/SprocketHoles";
+import SectionHeader from "../components/SectionHeader";
+import Card from "../components/Card";
 
 const Home = () => {
   return (
@@ -26,27 +27,38 @@ const Home = () => {
       />
       <Hero />
       <Timeline />
-      <Section>
-        <div className="flex flex-col gap-6">
-          <h2 className="mb-0">Submission requirements</h2>
+      <Section row>
+        <div className="flex flex-col flex-1 gap-4">
+          <SectionHeader
+            title={"Three things to know before you submit."}
+            description={
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin, eros sed convallis laoreet, diam turpis tempus lacus, ornare imperdiet dui felis at dolor. Nulla et accumsan diam. Aenean vitae neque finibus neque euismod imperdiet non id sem. Nullam tincidunt elementum sapien, in tempor erat sodales in."
+            }
+          />
+          <div className="flex gap-4">
+            <Button to={"/submit"} label="Start a submission" />
+            <Button to={"/submit"} label="Full requirements" ghost />
+          </div>
+        </div>
 
-          <div className="mb-2 grid grid-cols-1 gap-4 md:grid-cols-3">
-            {submissionHighlights.map(({ title, description }) => (
-              <InfoCard key={title} title={title} variant="light">
-                <p className="mb-0 text-sm leading-relaxed text-body">
-                  {description}
-                </p>
-              </InfoCard>
-            ))}
-          </div>
-          <div className="flex flex-wrap gap-3 sm:gap-4">
-            <HeroButton link={FILMFREEWAY_LINK}>
-              Submit via FilmFreeway
-            </HeroButton>
-            <HeroButton to="/submit" variant="secondary">
-              Read full requirements
-            </HeroButton>
-          </div>
+        <div className="flex flex-col flex-1/4 gap-4">
+          <Card
+            id="01"
+            title="Eligibility"
+            body="Current students and recent graduates of participating NYC universities."
+          />
+          <Card
+            id="02"
+            title="Format"
+            body="10 minutes max, credits included. Any genre, primarily student-produced."
+            className="mx-auto"
+          />
+          <Card
+            id="03"
+            title="Deadline"
+            body="Submissions close January 23, 2027. Selected films are asked for stills, poster art and cast & crew later."
+            className="ml-auto"
+          />
         </div>
       </Section>
       <Section variant="alt">
@@ -58,7 +70,7 @@ const Home = () => {
               className="max-w-full md:max-w-[455px]"
             />
           }
-          actions={<HeroButton to="/about">Learn More</HeroButton>}
+          actions={<Button to="/about" label="Learn More" />}
         >
           <p className="mb-0">
             The Liberty Film Festival is a 2027 intercollegiate film festival
@@ -93,10 +105,8 @@ const Home = () => {
               a real venue, a real audience, and real industry access.
             </p>
             <div className="flex flex-wrap gap-3 sm:gap-4">
-              <HeroButton link={DONATE_LINK}>Donate on Seed&Spark</HeroButton>
-              <HeroButton to="/donate#donor-tiers" variant="secondary">
-                See donor tiers
-              </HeroButton>
+              <Button link={DONATE_LINK} label="Donate on Seed&Spark" />
+              <Button to="/donate#donor-tiers" ghost label="See donor tiers" />
             </div>
           </div>
 
