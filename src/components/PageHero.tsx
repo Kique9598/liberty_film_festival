@@ -17,9 +17,7 @@ const PageHero = ({ title, children, actions, content }: PageHeroProps) => {
           <div className="flex flex-wrap gap-3 sm:gap-4">{actions}</div>
         )}
       </div>
-      <div className="w-full lg:w-2/5">
-        {content}
-      </div>
+      <div className="w-full lg:w-2/5">{content}</div>
     </div>
   );
 };

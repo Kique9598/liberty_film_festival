@@ -107,26 +107,133 @@
   --color-brand-hover: #a5bca6;
   --color-ink: var(--color-black-50);
   --color-surface: var(--color-parch-50);
+
+  /* ---------- THIS MY SHIT ---------- */
+  /* colors */
+  --clr-transparent: transparent;
+  --clr-ink: #2a2420;
+  --clr-ink-2: #635748;
+  --clr-ink-3: #d4c9b0;
+  --clr-white: #fff;
+  --clr-brown: #201f1b;
+  --clr-green-600: #6e9270;
+  --clr-green-700: #5d745d;
+  --clr-gold-500: #a8945c;
+  --clr-gold-600: #8a7a60;
+  --clr-parch-50: #e3e1d5;
+  --clr-parch-300: #f8f5f1;
+  --clr-parch-400: #d9cfc4;
+
+  /* semantics */
+  --clr-text-primary: var(--clr-ink);
+  --clr-text-secondary: var(--clr-ink-2);
+  --clr-text-tertiary: var(--clr-ink-3);
+  --clr-text-light: var(--clr-white);
+  --clr-green: var(--clr-green-700);
+  --clr-soft-green: var(--clr-green-600);
+  --clr-soft-gold: var(--clr-gold-500);
+  --clr-gold: var(--clr-gold-600);
+  --clr-bg: var(--clr-parch-50);
+  --clr-bg-raised: var(--clr-parch-300);
+  --clr-background: var(--clr-brown);
+  --clr-border: var(--clr-parch-400);
+
+  /* components */
+  --clr-page: var(--clr-bg);
+  --clr-card: var(--clr-bg-raised);
+  --clr-section-dark: var(--clr-background);
+  --clr-header: var(--clr-text-primary);
+  --clr-header-dark: var(--clr-text-light);
+  --clr-header-green: var(--clr-soft-green);
+  --clr-header-gold: var(--clr-gold);
+  --clr-p: var(--clr-text-primary);
+  --clr-p-dark: var(--clr-text-light);
+  --clr-sub_header: var(--clr-text-secondary);
+  --clr-sub_header-dark: var(--clr-text-tertiary);
+  --clr-accent: var(--clr-text-tertiary);
+  --clr-btn: var(--clr-green);
+  --clr-btn-text: var(--clr-white);
+  --clr-btn-gold: var(--clr-soft-gold);
 }
 
 body {
-  @apply bg-[#E3E1D5] text-ink antialiased;
+  color: var(--clr-p);
+  background: var(--clr-page);
+  @apply antialiased font-cormorant font-medium;
 }
 
 h1 {
-  @apply font-cormorant text-4xl font-light sm:text-5xl lg:text-6xl;
+  color: var(--clr-header);
+  @apply text-4xl sm:text-5xl lg:text-6xl font-normal;
 }
 
 h2 {
-  @apply font-cormorant text-3xl font-medium sm:text-4xl;
+  color: var(--clr-header);
+  @apply text-4xl sm:text-4xl font-normal;
 }
 
 h3 {
-  @apply font-cormorant text-2xl font-medium text-ink;
+  color: var(--clr-header);
+  @apply text-3xl font-normal;
 }
 
 h4 {
-  @apply font-cormorant text-2xl font-light sm:text-3xl;
+  color: var(--clr-header);
+  @apply text-2xl sm:text-3xl font-normal;
+}
+
+h5 {
+  color: var(--clr-header-gold);
+  @apply uppercase text-xs font-bold;
+}
+
+p {
+  color: var(--clr-p);
+}
+
+p.sub-header {
+  color: var(--clr-sub_header);
+  @apply font-normal;
+}
+
+p.accent {
+  color: var(--clr-accent);
+}
+
+.section-dark {
+  background: var(--clr-section-dark);
+  --clr-header: var(--clr-header-dark);
+  --clr-sub_header: var(--clr-sub_header-dark);
+  --clr-p: var(--clr-p-dark);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p.sub-header {
+  @apply font-sans;
+  &.header-green {
+    --clr-header: var(--clr-header-green);
+  }
+}
+
+.button {
+  color: var(--clr-btn-text);
+  background-color: var(--clr-btn);
+  border: 1px solid var(--clr-btn);
+  @apply flex w-fit items-center gap-2 rounded-md px-7 py-3.5 transition-all hover:-translate-y-1 duration-200 hover:shadow-md cursor-pointer font-medium;
+}
+
+.gold-button {
+  --clr-btn: var(--clr-btn-gold);
+  --clr-btn-text: var(--clr-ink);
+}
+
+.ghost-button {
+  --clr-btn-text: var(--clr-btn);
+  background-color: transparent !important;
 }
 
 @layer components {

@@ -1,4 +1,4 @@
-import HeroButton from "../components/Button";
+import Button from "../components/Button";
 import Section from "../components/Section";
 import PageHero from "../components/PageHero";
 import SectionHeader from "../components/SectionHeader";
@@ -23,9 +23,7 @@ const Submit = () => {
         <PageHero
           title="Submit your film."
           actions={
-            <HeroButton link={FILMFREEWAY_LINK}>
-              Submit via FilmFreeway
-            </HeroButton>
+            <Button link={FILMFREEWAY_LINK} label="Submit via FilmFreeway" />
           }
         >
           <p className="mb-0">
@@ -36,11 +34,11 @@ const Submit = () => {
         </PageHero>
       </Section>
 
-      <Section variant="narrow">
+      <Section>
         <SubmissionTimeline />
       </Section>
 
-      <Section variant="prose">
+      <Section>
         <div className="flex flex-col gap-8">
           <SectionHeader
             title="Eligibility"
@@ -57,7 +55,7 @@ const Submit = () => {
         </div>
       </Section>
 
-      <Section variant="alt">
+      <Section>
         <div className="mx-auto flex max-w-3xl flex-col gap-8">
           <SectionHeader
             title="Student verification"
@@ -67,7 +65,7 @@ const Submit = () => {
         </div>
       </Section>
 
-      <Section variant="prose">
+      <Section>
         <div className="flex flex-col gap-8">
           <SectionHeader
             title="Film requirements"
@@ -143,9 +141,7 @@ const Submit = () => {
             Submissions are handled through FilmFreeway. You'll create a free
             account there to upload your film and materials.
           </p>
-          <HeroButton link={FILMFREEWAY_LINK}>
-            Submit via FilmFreeway
-          </HeroButton>
+          <Button link={FILMFREEWAY_LINK} label="Submit via FilmFreeway" />
         </div>
       </Section>
     </>

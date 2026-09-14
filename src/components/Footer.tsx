@@ -24,7 +24,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <span className={sectionLabelClass}>Festival</span>
+            <h5>Festival</h5>
             <nav className="flex flex-col gap-2">
               <Link to="/about" className={footerLinkClass}>
                 About
@@ -39,7 +39,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <span className={sectionLabelClass}>Contact</span>
+            <h5>Contact</h5>
             <div className="flex flex-col gap-2">
               <a href={`mailto:${CONTACT_EMAIL}`} className={footerLinkClass}>
                 {CONTACT_EMAIL}

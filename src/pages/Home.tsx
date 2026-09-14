@@ -5,7 +5,7 @@ import ParticipatingSchools from "../components/ParticipatingSchools";
 import Button from "../components/Button";
 import VideoPlayer from "../components/VideoPlayer";
 import backdrop from "../assets/backdrop.png";
-import { PROMO_VIDEO_ID } from "../constants/links";
+import { PROMO_VIDEO_ID, DONATE_LINK } from "../constants/links";
 import SectionHeader from "../components/SectionHeader";
 import Card from "../components/Card";
 import ButtonContainer from "../components/ButtonContainer";
@@ -22,12 +22,14 @@ const Home = () => {
       <Timeline />
       <Section row>
         <div className="flex flex-col flex-1 gap-4">
-          <SectionHeader
-            title={"Three things to know before you submit."}
-            description={
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin, eros sed convallis laoreet, diam turpis tempus lacus, ornare imperdiet dui felis at dolor. Nulla et accumsan diam. Aenean vitae neque finibus neque euismod imperdiet non id sem. Nullam tincidunt elementum sapien, in tempor erat sodales in."
-            }
-          />
+          <SectionHeader title={"Three things to know before you submit."} />
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+            sollicitudin, eros sed convallis laoreet, diam turpis tempus lacus,
+            ornare imperdiet dui felis at dolor. Nulla et accumsan diam. Aenean
+            vitae neque finibus neque euismod imperdiet non id sem. Nullam
+            tincidunt elementum sapien, in tempor erat sodales in.
+          </p>
           <ButtonContainer>
             <Button to={"/submit"} label="Start a submission" />
             <Button to={"/submit"} label="Full requirements" ghost />
@@ -54,20 +56,19 @@ const Home = () => {
           />
         </div>
       </Section>
-      <Section className="bg-[#DCD8C9]">
+      <Section variant="full" className="bg-[#DCD8C9]">
         <SectionHeader title={"Participating Schools"} centered />
         <ParticipatingSchools />
       </Section>
-      <Section row variant="banner" className={"bg-[#201F1B]"}>
+      <Section row variant="banner" dark>
         <div className="flex flex-col gap-4">
           <SectionHeader
-            dark
             title="Student filmmaking runs on community support."
             description="Liberty is entirely student-run and independently funded. Every dollar goes toward a real venue, a real audience, and real industry access for young filmmakers."
           />
           <ButtonContainer>
             <Button
-              to={"/donate"}
+              link={DONATE_LINK}
               label="Support the festival"
               variant="gold"
             />

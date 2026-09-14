@@ -1,5 +1,5 @@
 import Section from "../components/Section";
-import HeroButton from "../components/Button";
+import Button from "../components/Button";
 import PageHero from "../components/PageHero";
 import SectionHeader from "../components/SectionHeader";
 import InfoCard from "../components/InfoCard";
@@ -21,9 +21,7 @@ const Donate = () => {
               community support.
             </>
           }
-          actions={
-            <HeroButton link={DONATE_LINK}>Donate on Seed&Spark</HeroButton>
-          }
+          actions={<Button link={DONATE_LINK} label="Donate on Seed&Spark" />}
         >
           <p className="mb-0">
             Liberty Film Festival is entirely student-run and independently
@@ -51,7 +49,7 @@ const Donate = () => {
         </div>
       </Section>
 
-      <Section id="donor-tiers" scrollMargin>
+      <Section scrollMargin>
         <div className="flex flex-col gap-10">
           <SectionHeader
             title="Donor incentives"
@@ -97,7 +95,7 @@ const Donate = () => {
           </div>
 
           <div className="flex flex-col items-start gap-3">
-            <HeroButton link={DONATE_LINK}>Donate on Seed&Spark</HeroButton>
+            <Button link={DONATE_LINK} label="Donate on Seed&Spark" />
             <p className="mb-0 text-sm text-muted">
               All donations are processed securely through Seed&Spark.
             </p>
@@ -124,9 +122,10 @@ const Donate = () => {
           </ul>
 
           <div className="flex flex-col items-start gap-3">
-            <HeroButton link={DONATE_LINK}>
-              View the Wishlist on Seed&Spark
-            </HeroButton>
+            <Button
+              link={DONATE_LINK}
+              label="View the Wishlist on Seed&Spark"
+            />
             <p className="mb-0 text-sm text-muted">
               Pledges and loan items are handled on Seed&Spark.
             </p>

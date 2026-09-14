@@ -12,7 +12,7 @@ const Card = ({ title, body, id, className }: CardProps) => {
     >
       <div className="v-sprockets" />
       <div className="flex gap-6 py-3 px-6">
-        <h2 className="text-[#6E9270]">{id}</h2>
+        <h2 className="header-green">{id}</h2>
         <div className="flex flex-col gap-3">
           <h4>{title}</h4>
           <p>{body}</p>

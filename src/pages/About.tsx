@@ -22,9 +22,9 @@ const About = () => {
           }
         >
           <p className="mb-0">
-            Liberty Film Festival is a 2027 intercollegiate film festival uniting
-            New York City's top universities — Columbia, NYU, Fordham, Pratt,
-            Pace, SVA, Brooklyn College, and more — to celebrate the next
+            Liberty Film Festival is a 2027 intercollegiate film festival
+            uniting New York City's top universities — Columbia, NYU, Fordham,
+            Pratt, Pace, SVA, Brooklyn College, and more — to celebrate the next
             generation of filmmakers.
           </p>
         </PageHero>
@@ -71,7 +71,7 @@ const About = () => {
         </div>
       </Section>
 
-      <Section variant="alt">
+      <Section>
         <SponsorsSection />
       </Section>
 
@@ -94,7 +94,8 @@ const About = () => {
         </div>
       </Section>
 
-      <Section>
+      <Section className="bg-[#DCD8C9]">
+        <SectionHeader title={"Participating Schools"} centered />
         <ParticipatingSchools />
       </Section>
     </>

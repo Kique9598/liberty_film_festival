@@ -3,8 +3,8 @@ import { IconContext } from "react-icons/lib";
 import { LuExternalLink } from "react-icons/lu";
 
 type IconProps = {
-    size?: string;
-}
+  size?: string;
+};
 
 const Icon = ({ size = "24" }: IconProps) => {
   return (
