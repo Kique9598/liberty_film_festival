@@ -54,7 +54,13 @@ const Donate = () => {
                 title={title}
                 titleSize="lg"
                 variant={index === 1 ? "highlight" : "default"}
-                className={index === 1 ? "md:translate-y-6" : index === 2 ? "md:translate-y-12" : ""}
+                className={
+                  index === 1
+                    ? "md:translate-y-6"
+                    : index === 2
+                      ? "md:translate-y-12"
+                      : ""
+                }
               >
                 <p className="mb-0 text-sm leading-relaxed text-body">
                   {description}

@@ -68,9 +68,23 @@ const Submit = () => {
           </div>
         </div>
         <div className="flex flex-1 flex-col justify-center gap-4">
-          <Card id="01" title="Who can submit?" body="Current students and recent graduates of participating NYC colleges and universities." />
-          <Card id="02" title="What can I submit?" body="Any genre of primarily student-produced short film, completed within the eligible period." className="mx-auto" />
-          <Card id="03" title="What does it cost?" body="Nothing. Submission through FilmFreeway is completely free." className="ml-auto" />
+          <Card
+            id="01"
+            title="Who can submit?"
+            body="Current students and recent graduates of participating NYC colleges and universities."
+          />
+          <Card
+            id="02"
+            title="What can I submit?"
+            body="Any genre of primarily student-produced short film, completed within the eligible period."
+            className="mx-auto"
+          />
+          <Card
+            id="03"
+            title="What does it cost?"
+            body="Nothing. Submission through FilmFreeway is completely free."
+            className="ml-auto"
+          />
         </div>
       </Section>
 
