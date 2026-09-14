@@ -2,7 +2,7 @@ export const filmRequirements = [
   "Completed within the past two (2) years (as of the submission deadline)",
   "10 minutes maximum, including credits",
   "Any genre",
-  "Exactly one primary student director",
+  "Exactly one primary student director (for the purposes of eligibility evaluation)",
 ];
 
 export const submissionRules = [

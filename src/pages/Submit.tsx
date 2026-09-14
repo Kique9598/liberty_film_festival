@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Button from "../components/Button";
 import Section from "../components/Section";
 import PageHero from "../components/PageHero";
@@ -17,6 +18,12 @@ import {
 } from "../data/submitContent";
 
 const Submit = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const toggleQuestion = (index: number) => {
+    setOpenIndex((current) => (current === index ? null : index));
+  };
+
   return (
     <>
       <img
@@ -107,22 +114,69 @@ const Submit = () => {
       </Section>
 
       <Section>
-        <div className="mx-auto flex max-w-3xl flex-col gap-4">
+        <div className="mx-auto flex max-w-3xl flex-col">
           <SectionHeader
             title="FAQ"
             description="Common questions about eligibility and directorial credit."
           />
-          {faqItems.map(({ question, answer }) => (
-            <details
-              key={question}
-              className="rounded-lg border border-parch-400 bg-parch-50 p-4"
-            >
-              <summary className="cursor-pointer list-none font-medium text-body">
-                {question}
-              </summary>
-              <p className="mb-0 mt-3 text-body">{answer}</p>
-            </details>
-          ))}
+          <div className="overflow-hidden rounded-lg border border-parch-400 bg-parch-50">
+            {faqItems.map(({ question, answer }, index) => {
+              const isOpen = openIndex === index;
+
+              return (
+                <div
+                  key={question}
+                  className={`border-b border-parch-300 last:border-b-0 ${
+                    index === 0 ? "border-t-0" : ""
+                  }`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => toggleQuestion(index)}
+                    className="flex w-full cursor-pointer items-center justify-between gap-4 px-4 py-4 text-left md:px-5"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="pr-4 text-body">{question}</span>
+                    <span
+                      className={`shrink-0 transition-transform duration-300 ${
+                        isOpen ? "rotate-180" : "rotate-0"
+                      }`}
+                    >
+                      <svg
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5 text-gold-600"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M5 7.5L10 12.5L15 7.5"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  </button>
+
+                  <div
+                    className={`grid transition-all duration-300 ease-out ${
+                      isOpen
+                        ? "grid-rows-[1fr] opacity-100"
+                        : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="px-4 pb-4 pt-0 text-body md:px-5">
+                        {answer}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </Section>
 
