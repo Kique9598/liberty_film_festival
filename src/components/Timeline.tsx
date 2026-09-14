@@ -62,7 +62,7 @@ const Timeline = () => {
       label: "Showtime",
       align: "right",
       active: false,
-      tip: "Feb 12, 2027 · 6:00 PM EST · Live in NYC — tickets on sale soon.",
+      tip: "Feb 12, 2027 · 6:00 PM EST — the live NYC screening.",
     },
   ] as const;
 
@@ -89,7 +89,7 @@ const Timeline = () => {
               { value: seconds, label: "SEC" },
             ].map(({ value, label }) => (
               <div key={label} className="flex gap-1 items-end">
-                <span className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl text-white">
+                <span className="font-xanh-mono text-2xl  xs:text-3xl sm:text-5xl md:text-6xl text-white">
                   {formatTime(value)}
                 </span>
                 <span className="text-[#D4C9B0]">{label}</span>
