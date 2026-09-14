@@ -9,6 +9,7 @@ import { PROMO_VIDEO_ID, DONATE_LINK } from "../constants/links";
 import SectionHeader from "../components/SectionHeader";
 import Card from "../components/Card";
 import ButtonContainer from "../components/ButtonContainer";
+import { contactLinks } from "../data/contactLinks";
 
 const Home = () => {
   return (
@@ -20,6 +21,26 @@ const Home = () => {
       />
       <Hero />
       <Timeline />
+
+      <Section variant="banner" dark>
+        <div className="flex flex-col gap-6 text-center md:text-left">
+          <p className="label-caps mb-0 text-gold-300">Live event</p>
+          <h2 className="mb-0 text-3xl text-white sm:text-4xl md:text-5xl">
+            A night at the movies — live in New York City.
+          </h2>
+          <p className="mb-0 max-w-3xl text-lg text-white/80">
+            Liberty culminates in an in-person screening and awards night.
+            Venue, date, and tickets are announced soon. Be the first to know.
+          </p>
+          <ButtonContainer>
+            <Button
+              link={contactLinks.linktree}
+              label="Follow on Linktree"
+              variant="gold"
+            />
+          </ButtonContainer>
+        </div>
+      </Section>
       <Section row>
         <div className="flex flex-col flex-1 gap-4">
           <SectionHeader title={"Three things to know before you submit."} />

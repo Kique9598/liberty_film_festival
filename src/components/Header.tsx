@@ -33,11 +33,12 @@ const Header = () => {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/submit">Submit</NavLink>
+          <NavLink to="/tickets">Tickets</NavLink>
           <NavLink to="/donate">Donate</NavLink>
         </nav>
 
         <div className="ml-auto shrink-0">
-          <NavButton to="/submit">Submit a Film</NavButton>
+          <NavButton to="/tickets">Get Ticket Alerts</NavButton>
         </div>
       </div>
     </header>

@@ -62,7 +62,7 @@ const Timeline = () => {
       label: "Showtime",
       align: "right",
       active: false,
-      tip: "Feb 12, 2027 · 6:00 PM EST — the live NYC screening.",
+      tip: "Feb 12, 2027 · 6:00 PM EST · Live in NYC — tickets on sale soon.",
     },
   ] as const;
 
