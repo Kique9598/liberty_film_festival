@@ -38,7 +38,7 @@ const Submit = () => {
           actions={<Button to={"/submitform"} label="Start a submission" />}
         >
           <p className="mb-0">
-            Read everything below before you head to FilmFreeway. It covers
+            Read everything below before submitting your film. It covers
             eligibility, student verification, film requirements, and the
             materials you'll need. Submission is free.
           </p>
@@ -190,8 +190,8 @@ const Submit = () => {
         <div className="mx-auto flex max-w-xl flex-col items-center gap-6 text-center">
           <h2 className="mb-0">Ready to submit?</h2>
           <p className="mb-0 text-muted">
-            Submissions are handled through FilmFreeway. You'll create a free
-            account there to upload your film and materials.
+            Complete the submission form here and upload your film and materials
+            through the custom Liberty Film Festival submission flow.
           </p>
           <Button to={"/submitform"} label="Start a submission" />
         </div>

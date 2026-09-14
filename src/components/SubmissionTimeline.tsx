@@ -3,7 +3,7 @@ const submissionDeadlines = [
     label: "Submit by",
     date: "January 23, 2027",
     description:
-      "Film screener, synopsis, logline, and student verification via FilmFreeway.",
+      "Film screener, synopsis, logline, and student verification through the submission form.",
   },
   {
     label: "Selection notifications",
@@ -29,7 +29,10 @@ const SubmissionTimeline = () => {
     <div className="surface-panel px-4 py-5 sm:px-6">
       <div className="flex flex-col">
         {submissionDeadlines.map(({ label, date, description }, index) => (
-          <div key={label} className="relative flex gap-4 pb-6 last:pb-0 sm:gap-5">
+          <div
+            key={label}
+            className="relative flex gap-4 pb-6 last:pb-0 sm:gap-5"
+          >
             {index < submissionDeadlines.length - 1 && (
               <div className="absolute top-4 left-[5px] h-[calc(100%-4px)] w-px bg-gold-500" />
             )}

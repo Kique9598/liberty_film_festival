@@ -44,7 +44,7 @@ const Timeline = () => {
       label: "Submissions",
       align: "left",
       active: true,
-      tip: "Enter your film for free via FilmFreeway through Jan 23.",
+      tip: "Submit your film for free through the festival submission form through Jan 23.",
     },
     {
       label: "Judging",
