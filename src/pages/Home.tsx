@@ -8,6 +8,7 @@ import backdrop from "../assets/backdrop.png";
 import { PROMO_VIDEO_ID } from "../constants/links";
 import SectionHeader from "../components/SectionHeader";
 import Card from "../components/Card";
+import ButtonContainer from "../components/ButtonContainer";
 
 const Home = () => {
   return (
@@ -27,10 +28,10 @@ const Home = () => {
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin, eros sed convallis laoreet, diam turpis tempus lacus, ornare imperdiet dui felis at dolor. Nulla et accumsan diam. Aenean vitae neque finibus neque euismod imperdiet non id sem. Nullam tincidunt elementum sapien, in tempor erat sodales in."
             }
           />
-          <div className="flex gap-4">
+          <ButtonContainer>
             <Button to={"/submit"} label="Start a submission" />
             <Button to={"/submit"} label="Full requirements" ghost />
-          </div>
+          </ButtonContainer>
         </div>
 
         <div className="flex flex-col flex-1/4 gap-4">
@@ -64,13 +65,22 @@ const Home = () => {
             title="Student filmmaking runs on community support."
             description="Liberty is entirely student-run and independently funded. Every dollar goes toward a real venue, a real audience, and real industry access for young filmmakers."
           />
-          <Button to={"/donate"} label="Support the festival" variant="gold" />
+          <ButtonContainer>
+            <Button
+              to={"/donate"}
+              label="Support the festival"
+              variant="gold"
+            />
+          </ButtonContainer>
         </div>
         <VideoPlayer
           videoId={PROMO_VIDEO_ID}
           className="max-w-full md:max-w-[455px]"
         />
       </Section>
+      {/* <Section>
+        <SectionHeader title="With the Support of" centered />
+      </Section> */}
     </>
   );
 };

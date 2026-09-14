@@ -13,10 +13,10 @@ const SectionHeader = ({
   dark = false,
   showDivider = true,
 }: SectionHeaderProps) => {
-  const align = centered ? "items-center text-center" : "items-start text-left";
+  const align = centered ? "" : "sm:items-start sm:text-left";
 
   return (
-    <div className={`flex flex-col gap-3 ${align}`}>
+    <div className={`flex flex-col gap-3 items-center text-center ${align}`}>
       <h2 className={`${dark ? "text-white" : ""}`}>{title}</h2>
       {description && (
         <p
