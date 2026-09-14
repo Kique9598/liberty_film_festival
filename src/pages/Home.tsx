@@ -3,17 +3,9 @@ import Section from "../components/Section";
 import Timeline from "../components/Timeline";
 import ParticipatingSchools from "../components/ParticipatingSchools";
 import Button from "../components/Button";
-import InfoCard from "../components/InfoCard";
-import TwoColumnMedia from "../components/TwoColumnMedia";
 import VideoPlayer from "../components/VideoPlayer";
 import backdrop from "../assets/backdrop.png";
-import {
-  FILMFREEWAY_LINK,
-  DONATE_LINK,
-  PROMO_VIDEO_ID,
-} from "../constants/links";
-import { submissionHighlights } from "../data/homeContent";
-import { impactAreasShort } from "../data/impactAreas";
+import { PROMO_VIDEO_ID } from "../constants/links";
 import SectionHeader from "../components/SectionHeader";
 import Card from "../components/Card";
 
@@ -61,7 +53,10 @@ const Home = () => {
           />
         </div>
       </Section>
-      <ParticipatingSchools />
+      <Section className="bg-[#DCD8C9]">
+        <SectionHeader title={"Participating Schools"} centered />
+        <ParticipatingSchools />
+      </Section>
       <Section row variant="banner" className={"bg-[#201F1B]"}>
         <div className="flex flex-col gap-4">
           <SectionHeader

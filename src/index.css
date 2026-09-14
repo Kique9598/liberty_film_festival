@@ -257,6 +257,42 @@ h4 {
   .nav-cta {
     @apply inline-flex items-center rounded-md border border-brand/70 bg-brand/10 px-5 py-2 font-cormorant text-base font-medium text-green-700 transition-colors hover:border-brand hover:bg-brand hover:text-white;
   }
+
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    } /* exactly one copy's width */
+  }
+  .marquee-track {
+    animation: marquee-scroll 40s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    } /* respect motion-off users */
+  }
+
+  .sprockets {
+    @apply h-0.5 bg-black;
+    -webkit-mask: repeating-linear-gradient(
+      90deg,
+      #000 0 26px,
+      transparent 26px 52px
+    );
+    mask: repeating-linear-gradient(90deg, #000 0 26px, transparent 26px 52px);
+  }
+  .v-sprockets {
+    @apply w-3 bg-[#6E9270];
+    -webkit-mask: repeating-linear-gradient(
+      90deg,
+      #000 0 26px,
+      transparent 26px 52px
+    );
+    mask: repeating-linear-gradient(#000 0 24px, transparent 24px 40px);
+  }
 }
 
 @keyframes timeline-progress {

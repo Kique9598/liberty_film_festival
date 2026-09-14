@@ -1,74 +1,44 @@
-const vLineStyle = "bg-gold-500 h-1/2 my-auto";
-const hLineStyle = "bg-gold-500 col-span-3 md:col-span-7 h-px";
-const gridBlockStyle =
-  "grid w-full place-items-center p-2 aspect-video sm:p-3";
-
 const schools = [
-  "Columbia", "NYU", "Fordham", "PACE", "Pratt", "Sarah", "Lawrence", "SVA", "Brooklyn College", "The New School"
+  "Columbia",
+  "NYU",
+  "Fordham",
+  "PACE",
+  "Pratt",
+  "Sarah Lawrence",
+  "SVA",
+  "Brooklyn College",
+  "The New School",
 ];
 
 const ParticipatingSchools = () => {
   return (
     <>
-      <h2 className="text-center">Participating schools</h2>
-      <div className="m-auto grid max-w-4xl grid-cols-[1fr_1px_1fr] md:grid-cols-[1fr_1px_1fr_1px_1fr_1px_1fr]">
-        <div className={gridBlockStyle}>
-          <h4>{schools[0]}</h4>
+      <div
+        className="cursor-default marquee group relative w-full overflow-hidden 
+                   [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] border-t-1 border-b-1"
+      >
+        <div className="sprockets" />
+        <div className="marquee-track flex py-6 w-max group-hover:[animation-play-state:paused] ">
+          {/* render the list TWICE back-to-back so the loop is seamless */}
+          {[0, 1].map((copy) => (
+            <div key={copy} className="flex shrink-0" aria-hidden={copy === 1}>
+              {schools.map((s) => (
+                <span key={s} className="flex items-center whitespace-nowrap">
+                  <span className="px-10 text-2xl md:text-3xl font-serif">
+                    {s}
+                  </span>
+                  <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />
+                </span>
+              ))}
+            </div>
+          ))}
         </div>
-        <div className={vLineStyle} />
-        <div className={gridBlockStyle}>
-          <h4>{schools[1]}</h4>
-        </div>
-        <div className={`hidden md:block ${vLineStyle}`} />
-        <div className={`md:hidden ${hLineStyle}`} />
-        <div className={gridBlockStyle}>
-          <h4>{schools[2]}</h4>
-        </div>
-        <div className={vLineStyle} />
-        <div className={gridBlockStyle}>
-          <h4>{schools[3]}</h4>
-        </div>
-        <div className={vLineStyle} />
-        <div className={hLineStyle} />
-
-        <div className={gridBlockStyle}>
-          <h4>{schools[4]}</h4>
-        </div>
-        <div className={vLineStyle} />
-
-        <div className={gridBlockStyle}>
-          <h4>{schools[5]}</h4>
-        </div>
-        <div className={`hidden md:block ${vLineStyle}`} />
-        <div className={`md:hidden ${hLineStyle}`} />
-
-        <div className={gridBlockStyle}>
-          <h4>{schools[6]}</h4>
-        </div>
-        <div className={vLineStyle} />
-
-        <div className={gridBlockStyle}>
-          <h4>{schools[7]}</h4>
-        </div>
-
-        <div className={vLineStyle} />
-        <div className={hLineStyle} />
-
-        <div className={gridBlockStyle}>
-          <h4>{schools[8]}</h4>
-        </div>
-        <div className={vLineStyle} />
-
-        <div className={gridBlockStyle}>
-          <h4>{schools[9]}</h4>
-        </div>
-        <div className={`hidden md:block ${vLineStyle}`} />
-        <div className={`md:hidden ${hLineStyle}`} />
-
-        <div className={gridBlockStyle}>
-          <h4>{schools[10]}</h4>
-        </div>
+        <div className="sprockets" />
       </div>
+      <p className="text-center text-xs text-[#635748]">
+        Columbia · NYU · Fordham · PACE · Pratt · Sarah Lawrence · SVA ·
+        Brooklyn College · The New School
+      </p>
     </>
   );
 };

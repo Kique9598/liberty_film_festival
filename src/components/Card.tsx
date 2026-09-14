@@ -7,11 +7,16 @@ type CardProps = {
 
 const Card = ({ title, body, id, className }: CardProps) => {
   return (
-    <div className={`flex max-w-90 py-3 px-6 gap-6 bg-[#F8F5F1] border border-[#D9CFC4] rounded-md ${className}`}>
-      <h2 className="text-[#6E9270]">{id}</h2>
-      <div className="flex flex-col gap-3">
-        <h4>{title}</h4>
-        <p>{body}</p>
+    <div
+      className={`flex max-w-90 overflow-hidden bg-[#F8F5F1] border border-[#D9CFC4] rounded-md ${className}`}
+    >
+      <div className="v-sprockets" />
+      <div className="flex gap-6 py-3 px-6">
+        <h2 className="text-[#6E9270]">{id}</h2>
+        <div className="flex flex-col gap-3">
+          <h4>{title}</h4>
+          <p>{body}</p>
+        </div>
       </div>
     </div>
   );
