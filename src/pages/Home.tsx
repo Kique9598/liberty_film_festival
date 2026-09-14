@@ -31,7 +31,7 @@ const Home = () => {
             tincidunt elementum sapien, in tempor erat sodales in.
           </p>
           <ButtonContainer>
-            <Button to={"/submit"} label="Start a submission" />
+            <Button to={"/submitform"} label="Start a submission" />
             <Button to={"/submit"} label="Full requirements" ghost />
           </ButtonContainer>
         </div>

@@ -4,7 +4,6 @@ import PageHero from "../components/PageHero";
 import SectionHeader from "../components/SectionHeader";
 import BulletList from "../components/BulletList";
 import SubmissionTimeline from "../components/SubmissionTimeline";
-import { FILMFREEWAY_LINK } from "../constants/links";
 import backdrop from "../assets/backdrop.png";
 import {
   filmRequirements,
@@ -28,9 +27,7 @@ const Submit = () => {
       <Section variant="hero">
         <PageHero
           title="Submit your film."
-          actions={
-            <Button link={FILMFREEWAY_LINK} label="Submit via FilmFreeway" />
-          }
+          actions={<Button to={"/submitform"} label="Start a submission" />}
         >
           <p className="mb-0">
             Read everything below before you head to FilmFreeway. It covers
@@ -136,7 +133,7 @@ const Submit = () => {
             Submissions are handled through FilmFreeway. You'll create a free
             account there to upload your film and materials.
           </p>
-          <Button link={FILMFREEWAY_LINK} label="Submit via FilmFreeway" />
+          <Button to={"/submitform"} label="Start a submission" />
         </div>
       </Section>
     </>
