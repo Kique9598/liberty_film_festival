@@ -207,6 +207,30 @@ p.accent {
   --clr-p: var(--clr-p-dark);
 }
 
+/* Explicit text utilities otherwise keep their light-surface colors inside
+   dark sections. Keep the card exception below so light cards remain legible. */
+.section-dark .text-body {
+  color: var(--color-text-on-dark-primary);
+}
+
+.section-dark .text-muted {
+  color: var(--color-text-on-dark-secondary);
+}
+
+.section-dark .card-default,
+.section-dark .card-light,
+.section-dark .card-highlight {
+  --clr-header: var(--color-text-on-light-primary);
+  --clr-sub_header: var(--color-text-on-light-secondary);
+  --clr-p: var(--color-text-on-light-primary);
+}
+
+.section-dark .card-default .text-body,
+.section-dark .card-light .text-body,
+.section-dark .card-highlight .text-body {
+  color: var(--color-text-on-light-primary);
+}
+
 h1,
 h2,
 h3,

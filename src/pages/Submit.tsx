@@ -4,7 +4,9 @@ import PageHero from "../components/PageHero";
 import SectionHeader from "../components/SectionHeader";
 import BulletList from "../components/BulletList";
 import SubmissionTimeline from "../components/SubmissionTimeline";
+import Card from "../components/Card";
 import { FILMFREEWAY_LINK } from "../constants/links";
+import backdrop from "../assets/backdrop.png";
 import {
   eligibilityRules,
   inauguralRules,
@@ -19,6 +21,11 @@ import {
 const Submit = () => {
   return (
     <>
+      <img
+        src={backdrop}
+        alt=""
+        className="pointer-events-none absolute -top-24 -z-1 right-0 hidden w-48 opacity-90 sm:block md:-top-36 md:right-20 md:w-auto"
+      />
       <Section variant="hero">
         <PageHero
           title="Submit your film."
@@ -31,15 +38,22 @@ const Submit = () => {
             eligibility, student verification, film requirements, and the
             materials you'll need. Submission is free.
           </p>
+          <p className="mb-0 font-sans text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
+            Free to enter · 10 minutes maximum · Any genre
+          </p>
         </PageHero>
       </Section>
 
-      <Section>
+      <Section className="bg-[#DCD8C9]">
+        <SectionHeader
+          title="The road to the festival"
+          description="Keep these dates close as you prepare your submission."
+        />
         <SubmissionTimeline />
       </Section>
 
-      <Section>
-        <div className="flex flex-col gap-8">
+      <Section row>
+        <div className="flex flex-1 flex-col gap-8">
           <SectionHeader
             title="Eligibility"
             description="Liberty Film Festival is open to student filmmakers from participating colleges and universities across New York City."
@@ -53,9 +67,14 @@ const Submit = () => {
             <BulletList items={inauguralRules} />
           </div>
         </div>
+        <div className="flex flex-1 flex-col justify-center gap-4">
+          <Card id="01" title="Who can submit?" body="Current students and recent graduates of participating NYC colleges and universities." />
+          <Card id="02" title="What can I submit?" body="Any genre of primarily student-produced short film, completed within the eligible period." className="mx-auto" />
+          <Card id="03" title="What does it cost?" body="Nothing. Submission through FilmFreeway is completely free." className="ml-auto" />
+        </div>
       </Section>
 
-      <Section>
+      <Section className="bg-[#DCD8C9]">
         <div className="mx-auto flex max-w-3xl flex-col gap-8">
           <SectionHeader
             title="Student verification"
@@ -65,7 +84,7 @@ const Submit = () => {
         </div>
       </Section>
 
-      <Section>
+      <Section className="bg-[#DCD8C9]">
         <div className="flex flex-col gap-8">
           <SectionHeader
             title="Film requirements"
@@ -78,7 +97,7 @@ const Submit = () => {
         </div>
       </Section>
 
-      <Section>
+      <Section className="bg-[#DCD8C9]">
         <div className="flex flex-col gap-10">
           <div className="max-w-3xl">
             <SectionHeader

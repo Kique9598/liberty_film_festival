@@ -1,5 +1,6 @@
 import Section from "../components/Section";
 import Button from "../components/Button";
+import ButtonContainer from "../components/ButtonContainer";
 import PageHero from "../components/PageHero";
 import SectionHeader from "../components/SectionHeader";
 import InfoCard from "../components/InfoCard";
@@ -7,12 +8,18 @@ import { DONATE_LINK } from "../constants/links";
 import { impactAreas } from "../data/impactAreas";
 import { donorTiers, wishlistNeeds } from "../data/donateContent";
 import { useHashScroll } from "../hooks/useHashScroll";
+import backdrop from "../assets/backdrop.png";
 
 const Donate = () => {
   useHashScroll();
 
   return (
     <>
+      <img
+        src={backdrop}
+        alt=""
+        className="pointer-events-none absolute -top-24 -z-1 right-0 hidden w-48 opacity-90 sm:block md:-top-36 md:right-20 md:w-auto"
+      />
       <Section variant="hero">
         <PageHero
           title={
@@ -28,18 +35,27 @@ const Donate = () => {
             funded. Every dollar goes directly toward giving young filmmakers a
             real venue, a real audience, and real industry access.
           </p>
+          <p className="mb-0 font-sans text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
+            Every contribution supports the festival directly
+          </p>
         </PageHero>
       </Section>
 
-      <Section>
+      <Section className="bg-[#DCD8C9]">
         <div className="flex flex-col gap-10">
           <SectionHeader
             title="Where your donation goes"
             description="We are building this festival from the ground up. Your support funds the essentials, not overhead, so every contribution has a visible impact on the event."
           />
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
-            {impactAreas.map(({ title, description }) => (
-              <InfoCard key={title} title={title} titleSize="lg">
+            {impactAreas.map(({ title, description }, index) => (
+              <InfoCard
+                key={title}
+                title={title}
+                titleSize="lg"
+                variant={index === 1 ? "highlight" : "default"}
+                className={index === 1 ? "md:translate-y-6" : index === 2 ? "md:translate-y-12" : ""}
+              >
                 <p className="mb-0 text-sm leading-relaxed text-body">
                   {description}
                 </p>
@@ -94,25 +110,26 @@ const Donate = () => {
             </table>
           </div>
 
-          <div className="flex flex-col items-start gap-3">
+          <ButtonContainer>
             <Button link={DONATE_LINK} label="Donate on Seed&Spark" />
-            <p className="mb-0 text-sm text-muted">
-              All donations are processed securely through Seed&Spark.
-            </p>
-          </div>
+            <Button to="#wishlist" label="View the wishlist" ghost />
+          </ButtonContainer>
+          <p className="mb-0 text-sm text-muted">
+            All donations are processed securely through Seed&Spark.
+          </p>
         </div>
       </Section>
 
-      <Section>
+      <Section id="wishlist" className="bg-[#DCD8C9]">
         <div className="flex max-w-2xl flex-col gap-8">
           <SectionHeader
             title="Wishlist"
             description="We also maintain a wishlist on Seed&Spark for cash pledges and loan items."
           />
 
-          <ul className="flex flex-col border-t border-parch-300">
+          <ul className="flex flex-col border-t border-parch-500">
             {wishlistNeeds.map(({ item, cost }) => (
-              <li key={item} className="list-row">
+              <li key={item} className="list-row border-parch-500">
                 <span className="text-body">{item}</span>
                 <span className="shrink-0 font-cormorant font-semibold text-accent">
                   {cost}

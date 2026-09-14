@@ -6,12 +6,20 @@ import FounderCard from "../components/FounderCard";
 import SponsorsSection from "../components/SponsorsSection";
 import TwoColumnMedia from "../components/TwoColumnMedia";
 import VideoPlayer from "../components/VideoPlayer";
+import Button from "../components/Button";
+import ButtonContainer from "../components/ButtonContainer";
 import { PROMO_VIDEO_ID } from "../constants/links";
 import { founders, team } from "../data/team";
+import backdrop from "../assets/backdrop.png";
 
 const About = () => {
   return (
     <>
+      <img
+        src={backdrop}
+        alt=""
+        className="pointer-events-none absolute -top-24 -z-1 right-0 hidden w-48 opacity-90 sm:block md:-top-36 md:right-20 md:w-auto"
+      />
       <Section variant="hero">
         <PageHero
           title={
@@ -27,10 +35,14 @@ const About = () => {
             Pratt, Pace, SVA, Brooklyn College, and more — to celebrate the next
             generation of filmmakers.
           </p>
+          <ButtonContainer>
+            <Button to="/submit" label="Submit a film" />
+            <Button to="/donate" label="Support the festival" ghost />
+          </ButtonContainer>
         </PageHero>
       </Section>
 
-      <Section>
+      <Section className="bg-[#DCD8C9]">
         <TwoColumnMedia
           title="Our mission"
           media={
@@ -71,7 +83,7 @@ const About = () => {
         </div>
       </Section>
 
-      <Section>
+      <Section variant="banner" dark>
         <SponsorsSection />
       </Section>
 
