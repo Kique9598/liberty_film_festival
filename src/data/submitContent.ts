@@ -3,6 +3,8 @@ export const filmRequirements = [
   "10 minutes maximum, including credits",
   "Any genre",
   "Exactly one primary student director (for the purposes of eligibility evaluation)",
+  "Films must be primarily student-produced.",
+  "The submitting filmmaker must hold all necessary rights and permissions for the film's content, music, and materials.",
 ];
 
 export const submissionRules = [
@@ -66,4 +68,9 @@ export const publicityRights = [
   "Screen the film as part of the festival and any official festival-related events.",
   "Use film stills, posters, trailers, clips (up to 60 seconds), filmmaker names, and project information for promotional, marketing, educational, archival, and publicity purposes.",
   "Feature selected films and related materials on Liberty Film Festival's website, social media channels, press materials, and promotional content.",
+];
+
+export const youtubeRights = [
+  "Liberty Film Festival may invite selected filmmakers to have their films featured on the festival's official YouTube channel following the festival. Such online publication within the first year after the festival will only occur with the filmmaker's written permission.",
+  "One (1) year after the conclusion of the festival, Liberty Film Festival reserves the right to exhibit selected films on its official YouTube channel and other official Liberty Film Festival platforms for archival, educational, and promotional purposes unless the filmmaker submits a written opt-out request.",
 ];

@@ -15,6 +15,7 @@ import {
   ifSelected,
   recommendedDeliverables,
   publicityRights,
+  youtubeRights,
 } from "../data/submitContent";
 
 const Submit = () => {
@@ -109,6 +110,11 @@ const Submit = () => {
               grants Liberty Film Festival the non-exclusive right to:
             </p>
             <BulletList items={publicityRights} />
+          </div>
+
+          <div className="max-w-3xl border-t border-parch-300 pt-8">
+            <h3 className="mb-4">YouTube & online exhibition</h3>
+            <BulletList items={youtubeRights} />
           </div>
         </div>
       </Section>
