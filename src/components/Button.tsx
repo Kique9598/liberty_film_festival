@@ -1,6 +1,4 @@
 import { NavLink as RouterNavLink } from "react-router-dom";
-import { LuExternalLink } from "react-icons/lu";
-import { IconContext } from "react-icons/lib";
 import Icon from "./Icon";
 
 type ButtonProps = {

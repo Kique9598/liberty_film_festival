@@ -1,41 +1,43 @@
-export const eligibilityRules = [
-  "Films must have been created while the director was enrolled as a student at a participating college or university.",
-  "Films completed during the summer immediately before a student's first semester or immediately following their final semester are eligible.",
-  "Only one submission per film is permitted.",
-  "Co-directed films are eligible provided at least one director meets all student eligibility requirements.",
-  "Submit substantial evidence that the film was produced within the scope of eligible time restrictions (e.g. BTS footage, DaVinci Resolve timestamps).",
-];
-
-export const inauguralRules = [
-  "Films must have been completed within the past two (2) years.",
-  "The film's director must be a current student or have graduated within the past two years.",
-];
-
-export const verificationRequirements = [
-  "Student email address (.edu preferred when available)",
-  "University or college name",
-  "Student ID number (may be redacted except for the final four digits if required by institutional policy)",
-  "Expected graduation year",
-  "Proof of enrollment or recent graduation upon request",
-  "Major or intended area of study",
-];
-
 export const filmRequirements = [
-  "Maximum runtime: 10 minutes, including opening titles and end credits.",
-  "Any genre is eligible.",
-  "Films must be primarily student-produced.",
-  "The submitting filmmaker must hold all necessary rights and permissions for the film's content, music, and materials.",
-  "Rights and permissions must be granted to Liberty Film Festival for screening and publicity purposes.",
+  "Completed within the past two (2) years (as of the submission deadline)",
+  "10 minutes maximum, including credits",
+  "Any genre",
+  "Exactly one primary student director",
+];
+
+export const submissionRules = [
+  "One submission per film",
+  "One submission per director",
+  "Submissions must include substantial evidence that the film was produced within the eligible window (e.g. BTS footage, DaVinci timestamps)",
+];
+
+export const primaryStudentDirectorDefinition =
+  "This person must have been enrolled at a participating college or university while the film was being produced. If they have since graduated, the film's final completion must fall no later than 6 months after their graduation date.";
+
+export const faqItems = [
+  {
+    question: "Can a film have more than one director?",
+    answer:
+      "Yes. Co-directors are allowed, but only the primary student director's eligibility is evaluated.",
+  },
+  {
+    question:
+      "I directed two films. On one, another student is the primary director; on the other, I'm the primary director. Can I submit mine?",
+    answer:
+      "No. Each person may be credited as a director — primary or co-director — on only one submitted film. Since you're already credited as a co-director on the first film's submission, submitting a second film where you're the director would credit you on two submissions, which isn't allowed. You'd need to choose which single film carries your director credit.",
+  },
+  {
+    question: "I've graduated. Am I still eligible?",
+    answer:
+      "Yes, if you were enrolled while producing the film and finished it within 6 months of your graduation date, and completion was within the past two years. A film made entirely after graduation doesn't qualify, even if you graduated recently — production has to overlap with your enrollment.",
+  },
 ];
 
 export const atSubmission = [
-  "Film screener (private Vimeo, YouTube, or downloadable link)",
+  "Director name(s)",
   "Film title",
+  "Film screener (private Vimeo, YouTube, or downloadable link)",
   "Runtime (10 minutes maximum, including credits)",
-  "Director name",
-  "University or college affiliation",
-  "Student email address",
-  "Student ID number",
   "Completion year",
   "Synopsis (50–150 words)",
   "Logline (one sentence)",
@@ -47,14 +49,13 @@ export const ifSelected = [
   "3–10 behind-the-scenes (BTS) still photographs",
   "Complete cast list",
   "Complete crew list",
-  "Contact email addresses for cast and crew",
-  "Director headshot",
-  "Director biography (50–150 words)",
-  "Optional trailer or teaser",
-  "Social media handles for the film and filmmakers (optional)",
+  "Director headshot(s)",
+  "Director biography(s) (50–150 words)",
 ];
 
 export const recommendedDeliverables = [
+  "Optional trailer or teaser",
+  "Social media handles for the film and filmmakers",
   "Closed captions (.srt file preferred)",
   "Exhibition-quality screening file (1080p minimum)",
   "Film stills from the completed film (3–5)",

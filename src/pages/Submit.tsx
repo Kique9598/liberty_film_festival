@@ -4,14 +4,13 @@ import PageHero from "../components/PageHero";
 import SectionHeader from "../components/SectionHeader";
 import BulletList from "../components/BulletList";
 import SubmissionTimeline from "../components/SubmissionTimeline";
-import Card from "../components/Card";
 import { FILMFREEWAY_LINK } from "../constants/links";
 import backdrop from "../assets/backdrop.png";
 import {
-  eligibilityRules,
-  inauguralRules,
-  verificationRequirements,
   filmRequirements,
+  submissionRules,
+  primaryStudentDirectorDefinition,
+  faqItems,
   atSubmission,
   ifSelected,
   recommendedDeliverables,
@@ -52,73 +51,36 @@ const Submit = () => {
         <SubmissionTimeline />
       </Section>
 
-      <Section row>
-        <div className="flex flex-1 flex-col gap-8">
+      <Section>
+        <div className="flex flex-col gap-8">
           <SectionHeader
-            title="Eligibility"
-            description="Liberty Film Festival is open to student filmmakers from participating colleges and universities across New York City."
+            title="Film requirements"
+            description="Before you submit, make sure your film meets the following requirements."
           />
-          <BulletList items={eligibilityRules} />
+          <BulletList items={filmRequirements} />
           <div className="callout-box">
-            <h3 className="mb-3">Inaugural festival</h3>
-            <p className="mb-4 text-sm text-muted">
-              For the inaugural Liberty Film Festival:
-            </p>
-            <BulletList items={inauguralRules} />
+            <h3 className="mb-3">Submission rules</h3>
+            <BulletList items={submissionRules} />
           </div>
-        </div>
-        <div className="flex flex-1 flex-col justify-center gap-4">
-          <Card
-            id="01"
-            title="Who can submit?"
-            body="Current students and recent graduates of participating NYC colleges and universities."
-          />
-          <Card
-            id="02"
-            title="What can I submit?"
-            body="Any genre of primarily student-produced short film, completed within the eligible period."
-            className="mx-auto"
-          />
-          <Card
-            id="03"
-            title="What does it cost?"
-            body="Nothing. Submission through FilmFreeway is completely free."
-            className="ml-auto"
-          />
         </div>
       </Section>
 
       <Section className="bg-[#DCD8C9]">
-        <div className="mx-auto flex max-w-3xl flex-col gap-8">
+        <div className="flex flex-col gap-6">
           <SectionHeader
-            title="Student verification"
-            description="Submissions must be made through the official Liberty Film Festival submission form and include:"
+            title="Primary Student Director"
+            description="This person is the primary student director for the film."
           />
-          <BulletList items={verificationRequirements} />
+          <p className="mb-0 text-body">{primaryStudentDirectorDefinition}</p>
         </div>
       </Section>
 
       <Section className="bg-[#DCD8C9]">
         <div className="flex flex-col gap-8">
           <SectionHeader
-            title="Film requirements"
-            description="Before you submit, make sure your film meets these technical and rights requirements."
+            title="Required submission materials"
+            description="What you need to provide at submission and if your film is selected."
           />
-          <BulletList items={filmRequirements} />
-          <p className="callout-emphasis mb-0">
-            10 minutes max, including opening titles and end credits.
-          </p>
-        </div>
-      </Section>
-
-      <Section className="bg-[#DCD8C9]">
-        <div className="flex flex-col gap-10">
-          <div className="max-w-3xl">
-            <SectionHeader
-              title="Submission materials"
-              description="What you need at the time of submission, and what selected filmmakers will be asked to provide later."
-            />
-          </div>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
             <div className="card-default flex flex-col gap-4">
@@ -132,7 +94,7 @@ const Submit = () => {
           </div>
 
           <div className="max-w-3xl">
-            <h3 className="mb-4">Additional deliverables (recommended)</h3>
+            <h3 className="mb-4">Optional deliverables</h3>
             <BulletList items={recommendedDeliverables} />
           </div>
 
@@ -143,27 +105,27 @@ const Submit = () => {
               grants Liberty Film Festival the non-exclusive right to:
             </p>
             <BulletList items={publicityRights} />
-
-            <div className="mt-6 flex flex-col gap-4 text-sm leading-relaxed text-muted">
-              <p className="mb-0">
-                <span className="font-medium text-body">
-                  YouTube & online exhibition,
-                </span>{" "}
-                Liberty Film Festival may invite selected filmmakers to have
-                their films featured on the festival's official YouTube channel
-                following the festival. Such online publication within the first
-                year after the festival will only occur with the filmmaker's
-                written permission.
-              </p>
-              <p className="mb-0">
-                One (1) year after the conclusion of the festival, Liberty Film
-                Festival reserves the right to exhibit selected films on its
-                official YouTube channel and other official Liberty Film
-                Festival platforms for archival, educational, and promotional
-                purposes unless the filmmaker submits a written opt-out request.
-              </p>
-            </div>
           </div>
+        </div>
+      </Section>
+
+      <Section>
+        <div className="mx-auto flex max-w-3xl flex-col gap-4">
+          <SectionHeader
+            title="FAQ"
+            description="Common questions about eligibility and directorial credit."
+          />
+          {faqItems.map(({ question, answer }) => (
+            <details
+              key={question}
+              className="rounded-lg border border-parch-400 bg-parch-50 p-4"
+            >
+              <summary className="cursor-pointer list-none font-medium text-body">
+                {question}
+              </summary>
+              <p className="mb-0 mt-3 text-body">{answer}</p>
+            </details>
+          ))}
         </div>
       </Section>
 
