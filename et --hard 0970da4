@@ -1,0 +1,19 @@
+[33mee808c1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mredesign[m[33m)[m HEAD@{0}: reset: moving to HEAD~1
+[33m0970da4[m[33m ([m[1;31morigin/redesign[m[33m)[m HEAD@{1}: commit: minor style changes to many components and aadjustments to index.css
+[33mee808c1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mredesign[m[33m)[m HEAD@{2}: commit: edited section header and button container on dynamic screen width
+[33ma1d238c[m HEAD@{3}: commit: added linear gradients to page
+[33m6ffe9ac[m HEAD@{4}: commit: minor edits. added donate section
+[33m8c2ee03[m HEAD@{5}: commit: minor edits made. redesigned elegibility section
+[33m11e17db[m HEAD@{6}: checkout: moving from main to redesign
+[33mba7c0ab[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{7}: commit: minor changes
+[33mfd03987[m HEAD@{8}: commit: used AI to fix scrolling behavior on load page
+[33m36056d5[m HEAD@{9}: commit: used AI to embed promo video
+[33m394fa64[m HEAD@{10}: commit: used AI to polish and organize the UI and codebase of the overall website
+[33m4c62d38[m HEAD@{11}: commit: used AI to update the About page
+[33mfff3bd3[m HEAD@{12}: commit: used AI to update the submission requirments on the home page
+[33mf664f22[m HEAD@{13}: commit: used AI to update the donate section on the home page
+[33mb9f5c71[m HEAD@{14}: commit: used AI to make universal footer
+[33mccf673c[m HEAD@{15}: commit: used AI to add content to Submit page
+[33m16f937f[m HEAD@{16}: commit: used AI to add content to Donate page
+[33m9c5a776[m HEAD@{17}: pull: Fast-forward
+[33m1958f22[m HEAD@{18}: clone: from https://github.com/Kique9598/liberty_film_festival.git
