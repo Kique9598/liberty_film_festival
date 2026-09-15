@@ -8,7 +8,7 @@ import Submit from "./pages/Submit.tsx";
 import Donate from "./pages/Donate.tsx";
 import Tickets from "./pages/Tickets.tsx";
 import SprocketHoles from "./components/SprocketHoles.tsx";
-import ProfilePage from "./pages/ProfilePage .tsx";
+import ProfilePage from "./pages/ProfilePage.tsx";
 
 const App = () => {
   return (
