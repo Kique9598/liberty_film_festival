@@ -12,11 +12,13 @@
 // The database enforces the real rules (unique student email, one primary
 // director per film, runtime <= 600s, owner-only RLS). This UI just calls it.
 
-import type { ChangeEvent, CSSProperties, ReactNode } from "react";
+import type { ChangeEvent, ReactNode } from "react";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import type { Database } from "../lib/database.types";
 import type { User } from "@supabase/supabase-js";
+import Section from "../components/Section";
+import SectionHeader from "../components/SectionHeader";
 
 type SubmissionRow = Database["public"]["Tables"]["submissions"]["Row"];
 type SubmissionUpdate = Database["public"]["Tables"]["submissions"]["Update"];
@@ -76,21 +78,33 @@ export default function ProfilePage() {
   }, []);
 
   if (!ready)
-    return <p style={{ textAlign: "center", marginTop: 40 }}>Loading…</p>;
+    return (
+      <Section>
+        <p className="text-center text-muted">Loading your submission...</p>
+      </Section>
+    );
 
   return (
-    <div
-      style={{
-        maxWidth: 620,
-        margin: "40px auto",
-        padding: "0 20px",
-        fontFamily: "system-ui, sans-serif",
-        lineHeight: 1.5,
-      }}
-    >
-      <h1 style={{ fontSize: 22 }}>Liberty Film Festival — submission</h1>
-      {user ? <SubmissionArea user={user} /> : <AuthPanel />}
-    </div>
+    <>
+      <Section variant="hero" className="bg-[#DCD8C9]">
+        <div className="mx-auto flex max-w-4xl flex-col gap-5">
+          <p className="mb-0 font-sans text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
+            Liberty Film Festival · Phase one
+          </p>
+          <h1 className="mb-0 max-w-3xl">Submit your film.</h1>
+          <p className="mb-0 max-w-2xl text-lg text-body md:text-xl">
+            Start with your film details and student verification. If your film
+            is selected, return to this exact submission page to add the
+            finalist materials.
+          </p>
+        </div>
+      </Section>
+      <Section>
+        <div className="mx-auto flex w-full max-w-3xl flex-col gap-8">
+          {user ? <SubmissionArea user={user} /> : <AuthPanel />}
+        </div>
+      </Section>
+    </>
   );
 }
 
@@ -130,11 +144,23 @@ function AuthPanel() {
   }
 
   return (
-    <section style={card}>
-      <h2 style={h2}>Account</h2>
-      <Field label="Email (your submission login)">
+    <section className="card-default flex flex-col gap-5">
+      <SectionHeader
+        title="Create your submission account"
+        description="Use one email for your festival correspondence and your submission login."
+        showDivider={false}
+      />
+      <div className="border-l-4 border-gold-500 bg-gold-100 px-4 py-3">
+        <p className="mb-0 text-sm text-body">
+          We will use this email to contact you about your submission. Keep it
+          accessible: you will use it and your password to return here, check
+          your submission status, and add materials later if your film is
+          selected.
+        </p>
+      </div>
+      <Field label="Email for festival contact and submission login">
         <input
-          style={input}
+          className={inputClass}
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -142,18 +168,20 @@ function AuthPanel() {
       </Field>
       <Field label="Password">
         <input
-          style={input}
+          className={inputClass}
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
       </Field>
-      <button style={btn} onClick={signUp}>
-        Sign up
-      </button>{" "}
-      <button style={btn} onClick={logIn}>
-        Log in
-      </button>
+      <div className="flex flex-wrap gap-3">
+        <button className={buttonClass} onClick={signUp}>
+          Create account
+        </button>
+        <button className={goldButtonClass} onClick={logIn}>
+          Log in
+        </button>
+      </div>
       <StatusLine status={status} />
     </section>
   );
@@ -184,15 +212,17 @@ function SubmissionArea({ user }: { user: User }) {
 
   return (
     <>
-      <p style={{ fontSize: 14, opacity: 0.85 }}>
-        Logged in as {user.email}{" "}
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-parch-400 pb-4 text-sm">
+        <p className="mb-0 text-muted">
+          Signed in as <span className="text-body">{user.email}</span>
+        </p>
         <button
-          style={{ ...btn, background: "#666", marginLeft: 8 }}
+          className="font-sans text-xs font-bold uppercase tracking-[0.12em] text-gold-600 underline decoration-gold-400 underline-offset-4 transition-colors hover:text-gold-700"
           onClick={() => supabase.auth.signOut()}
         >
           Log out
         </button>
-      </p>
+      </div>
 
       {loading ? (
         <p>Loading…</p>
@@ -202,10 +232,11 @@ function SubmissionArea({ user }: { user: User }) {
           {submission.status === "selected" ? (
             <PhaseTwoForm submission={submission} user={user} onSaved={load} />
           ) : (
-            <section style={card}>
-              <p style={{ fontSize: 14, opacity: 0.75, margin: 0 }}>
-                Finalist materials open when your status is “selected”
-                (currently “{submission.status}”).
+            <section className="card-default border-l-4 border-green-500">
+              <p className="mb-0 text-body">
+                Finalist materials will open here when your status is
+                <strong> selected</strong>. Your current status is “
+                {submission.status}”.
               </p>
             </section>
           )}
@@ -230,10 +261,14 @@ function ExistingSummary({
     )
     .join(", ");
   return (
-    <section style={card}>
-      <strong>{submission.title || "(untitled)"}</strong> — status:{" "}
-      <strong>{submission.status}</strong>
-      <div style={{ fontSize: 14, marginTop: 6 }}>
+    <section className="card-default flex flex-col gap-2">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <strong className="font-sans text-lg">{submission.title || "(untitled)"}</strong>
+        <span className="font-sans text-xs font-bold uppercase tracking-[0.12em] text-gold-600">
+          Status: {submission.status}
+        </span>
+      </div>
+      <div className="text-sm text-muted">
         Directors: {names || "none"}
       </div>
     </section>
@@ -349,128 +384,112 @@ function PhaseOneForm({
   }
 
   return (
-    <section style={card}>
-      <h2 style={h2}>Submit your film</h2>
-      <Field label="Film title">
-        <input style={input} value={f.title} onChange={set("title")} />
-      </Field>
-      <Field label="Student email (eligibility)">
-        <input
-          style={input}
-          type="email"
-          value={f.studentEmail}
-          onChange={set("studentEmail")}
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-4">
+        <SectionHeader
+          title="Phase one: submit your film"
+          description="Complete the student verification and film details below."
         />
-      </Field>
-      <Field label="Student ID">
-        <input style={input} value={f.studentId} onChange={set("studentId")} />
-      </Field>
-      <Field label="University">
-        <input
-          style={input}
-          value={f.university}
-          onChange={set("university")}
-        />
-      </Field>
-      <Field label="Major">
-        <input style={input} value={f.major} onChange={set("major")} />
-      </Field>
-      <Field label="Expected graduation year">
-        <input
-          style={input}
-          type="number"
-          value={f.gradYear}
-          onChange={set("gradYear")}
-        />
-      </Field>
-      <Field label="Completion year">
-        <input
-          style={input}
-          type="number"
-          value={f.completionYear}
-          onChange={set("completionYear")}
-        />
-      </Field>
-      <Field label="Film screener URL (private Vimeo/YouTube/link)">
-        <input style={input} value={f.screener} onChange={set("screener")} />
-      </Field>
-      <Field label="Runtime (seconds, max 600)">
-        <input
-          style={input}
-          type="number"
-          value={f.runtime}
-          onChange={set("runtime")}
-        />
-      </Field>
-      <Field label="Logline (one sentence)">
-        <input style={input} value={f.logline} onChange={set("logline")} />
-      </Field>
-      <Field label="Synopsis (50–150 words)">
-        <textarea
-          style={{ ...input, minHeight: 70 }}
-          value={f.synopsis}
-          onChange={set("synopsis")}
-        />
-      </Field>
-
-      <label style={labelStyle}>
-        Directors — mark one as the primary student director
-      </label>
-      {directors.map((d, i) => (
-        <div
-          key={i}
-          style={{
-            display: "flex",
-            gap: 6,
-            marginBottom: 6,
-            alignItems: "center",
-            flexWrap: "wrap",
-          }}
-        >
-          <input
-            style={{ ...input, flex: 1, minWidth: 90 }}
-            placeholder="First"
-            value={d.first}
-            onChange={(e) => updateDirector(i, "first", e.target.value)}
-          />
-          <input
-            style={{ ...input, flex: 1, minWidth: 90 }}
-            placeholder="Middle"
-            value={d.middle}
-            onChange={(e) => updateDirector(i, "middle", e.target.value)}
-          />
-          <input
-            style={{ ...input, flex: 1, minWidth: 90 }}
-            placeholder="Last"
-            value={d.last}
-            onChange={(e) => updateDirector(i, "last", e.target.value)}
-          />
-          <label style={{ fontSize: 12, whiteSpace: "nowrap" }}>
-            <input
-              type="radio"
-              name="primary"
-              checked={d.isPrimary}
-              onChange={() => setPrimary(i)}
-            />{" "}
-            primary
-          </label>
+        <div className="border-l-4 border-green-500 bg-green-100 px-4 py-3">
+          <p className="mb-0 text-sm text-body">
+            This is the first phase of your submission. If your film is
+            selected, you will return to this exact form using your account to
+            add the finalist materials.
+          </p>
         </div>
-      ))}
-      <button
-        style={{ ...btn, background: "#666" }}
-        type="button"
-        onClick={addDirector}
-      >
-        + Add director
-      </button>
-
-      <div>
-        <button style={btn} onClick={submit}>
-          Submit
-        </button>
       </div>
+
+      <section className="card-default flex flex-col gap-5">
+        <SectionHeader
+          title="Qualifying Director"
+          description="Verify the student director and choose the university this film will represent in the competition."
+          showDivider={false}
+        />
+        <p className="mb-0 text-sm text-muted">
+          If multiple eligible student directors worked on the film, decide
+          together which one university the submission will be made on behalf
+          of. The selected university is the university represented by this
+          film in the competition.
+        </p>
+        <div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
+          <Field label="Student email (eligibility)">
+            <input className={inputClass} type="email" value={f.studentEmail} onChange={set("studentEmail")} />
+          </Field>
+          <Field label="Student ID">
+            <input className={inputClass} value={f.studentId} onChange={set("studentId")} />
+          </Field>
+          <Field label="University represented by this submission">
+            <input className={inputClass} value={f.university} onChange={set("university")} />
+          </Field>
+          <Field label="Major">
+            <input className={inputClass} value={f.major} onChange={set("major")} />
+          </Field>
+          <Field label="Expected graduation year">
+            <input className={inputClass} type="number" value={f.gradYear} onChange={set("gradYear")} />
+          </Field>
+        </div>
+
+        <div className="border-t border-parch-300 pt-4">
+          <p className="mb-3 font-sans text-xs font-bold uppercase tracking-[0.12em] text-gold-600">
+            Select the qualifying director
+          </p>
+          <div className="flex flex-col gap-3">
+            {directors.map((d, i) => (
+              <div key={i} className="grid grid-cols-1 items-end gap-3 sm:grid-cols-[1fr_1fr_1fr_auto]">
+                <Field label="First name">
+                  <input className={inputClass} value={d.first} onChange={(e) => updateDirector(i, "first", e.target.value)} />
+                </Field>
+                <Field label="Middle name">
+                  <input className={inputClass} value={d.middle} onChange={(e) => updateDirector(i, "middle", e.target.value)} />
+                </Field>
+                <Field label="Last name">
+                  <input className={inputClass} value={d.last} onChange={(e) => updateDirector(i, "last", e.target.value)} />
+                </Field>
+                <label className="mb-2 flex items-center gap-2 whitespace-nowrap font-sans text-xs font-bold uppercase tracking-[0.08em] text-gold-700">
+                  <input type="radio" name="primary" checked={d.isPrimary} onChange={() => setPrimary(i)} />
+                  Qualifying director
+                </label>
+              </div>
+            ))}
+          </div>
+          <button className={secondaryButtonClass} type="button" onClick={addDirector}>
+            + Add another director
+          </button>
+        </div>
+      </section>
+
+      <section className="card-default flex flex-col gap-5">
+        <SectionHeader
+          title="Film materials"
+          description="Tell us about the film you are submitting on behalf of the qualifying university."
+          showDivider={false}
+        />
+        <Field label="Film title">
+          <input className={inputClass} value={f.title} onChange={set("title")} />
+        </Field>
+        <div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
+          <Field label="Completion year">
+            <input className={inputClass} type="number" value={f.completionYear} onChange={set("completionYear")} />
+          </Field>
+          <Field label="Runtime (seconds, maximum 600)">
+            <input className={inputClass} type="number" value={f.runtime} onChange={set("runtime")} />
+          </Field>
+        </div>
+        <Field label="Film screener URL (private Vimeo, YouTube, or link)">
+          <input className={inputClass} value={f.screener} onChange={set("screener")} />
+        </Field>
+        <Field label="Logline (one sentence)">
+          <input className={inputClass} value={f.logline} onChange={set("logline")} />
+        </Field>
+        <Field label="Synopsis (50–150 words)">
+          <textarea className={`${inputClass} min-h-24`} value={f.synopsis} onChange={set("synopsis")} />
+        </Field>
+        <div>
+          <button className={buttonClass} onClick={submit}>Submit phase one</button>
+        </div>
+      </section>
       <StatusLine status={status} />
-    </section>
+    </div>
   );
 }
 
@@ -560,60 +579,65 @@ function PhaseTwoForm({
   }
 
   return (
-    <section style={card}>
-      <h2 style={h2}>Finalist materials</h2>
+    <section className="card-default flex flex-col gap-5">
+      <SectionHeader
+        title="Finalist materials"
+        description="Your film has been selected. Add the remaining materials below, then save your updates."
+        showDivider={false}
+      />
       <Field label="Cast list">
         <textarea
-          style={{ ...input, minHeight: 60 }}
+          className={`${inputClass} min-h-20`}
           value={t.castList}
           onChange={setText("castList")}
         />
       </Field>
       <Field label="Crew list">
         <textarea
-          style={{ ...input, minHeight: 60 }}
+          className={`${inputClass} min-h-20`}
           value={t.crewList}
           onChange={setText("crewList")}
         />
       </Field>
       <Field label="Social media handles">
         <input
-          style={input}
+          className={inputClass}
           value={t.socialMedia}
           onChange={setText("socialMedia")}
         />
       </Field>
       <Field label="Trailer URL">
-        <input style={input} value={t.trailer} onChange={setText("trailer")} />
+        <input className={inputClass} value={t.trailer} onChange={setText("trailer")} />
       </Field>
       <Field label="Website URL">
-        <input style={input} value={t.website} onChange={setText("website")} />
+        <input className={inputClass} value={t.website} onChange={setText("website")} />
       </Field>
       <Field label="Screening file URL (1080p+)">
         <input
-          style={input}
+          className={inputClass}
           value={t.screeningFile}
           onChange={setText("screeningFile")}
         />
       </Field>
       <Field label="Vertical poster (image)">
-        <input type="file" accept="image/*" onChange={setFile("vPoster")} />
+        <input className={fileInputClass} type="file" accept="image/*" onChange={setFile("vPoster")} />
       </Field>
       <Field label="Horizontal poster (image)">
-        <input type="file" accept="image/*" onChange={setFile("hPoster")} />
+        <input className={fileInputClass} type="file" accept="image/*" onChange={setFile("hPoster")} />
       </Field>
       <Field label="Closed captions">
-        <input type="file" onChange={setFile("captions")} />
+        <input className={fileInputClass} type="file" onChange={setFile("captions")} />
       </Field>
       <Field label="Finished screenplay (PDF)">
         <input
+          className={fileInputClass}
           type="file"
           accept="application/pdf"
           onChange={setFile("screenplay")}
         />
       </Field>
       <div>
-        <button style={btn} onClick={save}>
+        <button className={buttonClass} onClick={save}>
           Save finalist materials
         </button>
       </div>
@@ -625,8 +649,10 @@ function PhaseTwoForm({
 // ============================================================ small helpers + styles
 function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <div style={{ marginBottom: 8 }}>
-      <label style={labelStyle}>{label}</label>
+    <div className="flex flex-col gap-1">
+      <label className="font-sans text-xs font-bold uppercase tracking-[0.08em] text-gold-700">
+        {label}
+      </label>
       {children}
     </div>
   );
@@ -636,45 +662,20 @@ function StatusLine({ status }: { status: Status | null }) {
   if (!status) return null;
   return (
     <p
-      style={{
-        fontSize: 14,
-        marginTop: 10,
-        color: status.err ? "#c0392b" : "#1a8a3b",
-      }}
+      className={`font-sans text-sm ${status.err ? "text-red-700" : "text-green-700"}`}
     >
       {status.msg}
     </p>
   );
 }
 
-const card: CSSProperties = {
-  border: "1px solid rgba(128,128,128,0.35)",
-  borderRadius: 10,
-  padding: 16,
-  margin: "16px 0",
-};
-const h2: CSSProperties = { fontSize: 17, margin: "0 0 12px" };
-const labelStyle: CSSProperties = {
-  display: "block",
-  fontSize: 13,
-  margin: "8px 0 2px",
-};
-const input: CSSProperties = {
-  width: "100%",
-  padding: "7px 9px",
-  border: "1px solid rgba(128,128,128,0.5)",
-  borderRadius: 6,
-  boxSizing: "border-box",
-  fontFamily: "inherit",
-  background: "transparent",
-  color: "inherit",
-};
-const btn: CSSProperties = {
-  padding: "8px 14px",
-  border: "none",
-  borderRadius: 6,
-  background: "#2d6cdf",
-  color: "#fff",
-  cursor: "pointer",
-  marginTop: 10,
-};
+const inputClass =
+  "w-full border border-parch-400 bg-parch-50 px-3 py-2 font-sans text-sm text-body outline-none transition-colors placeholder:text-parch-700 focus:border-gold-500 focus:ring-1 focus:ring-gold-400";
+const fileInputClass =
+  "w-full border border-dashed border-parch-400 bg-parch-50 px-3 py-2 font-sans text-sm text-body file:mr-3 file:border-0 file:bg-gold-100 file:px-3 file:py-1 file:font-sans file:text-xs file:font-bold file:uppercase file:tracking-[0.08em] file:text-gold-700";
+const buttonClass =
+  "button cursor-pointer border-0 bg-green-700 px-6 py-3 font-sans text-xs font-bold uppercase tracking-[0.12em] text-white transition-colors hover:bg-green-600";
+const goldButtonClass =
+  "button cursor-pointer border-0 bg-gold-500 px-6 py-3 font-sans text-xs font-bold uppercase tracking-[0.12em] text-black-50 transition-colors hover:bg-gold-400";
+const secondaryButtonClass =
+  "mt-4 cursor-pointer border border-green-700 bg-transparent px-4 py-2 font-sans text-xs font-bold uppercase tracking-[0.1em] text-green-700 transition-colors hover:bg-green-100";
