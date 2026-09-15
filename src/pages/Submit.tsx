@@ -35,7 +35,7 @@ const Submit = () => {
       <Section variant="hero">
         <PageHero
           title="Submit your film."
-          actions={<Button to={"/submitform"} label="Start a submission" />}
+          actions={<Button to={"/profile"} label="Start a submission" />}
         >
           <p className="mb-0">
             Read everything below before submitting your film. It covers
@@ -193,7 +193,7 @@ const Submit = () => {
             Complete the submission form here and upload your film and materials
             through the custom Liberty Film Festival submission flow.
           </p>
-          <Button to={"/submitform"} label="Start a submission" />
+          <Button to={"/profile"} label="Start a submission" />
         </div>
       </Section>
     </>

@@ -8,7 +8,7 @@ import Submit from "./pages/Submit.tsx";
 import Donate from "./pages/Donate.tsx";
 import Tickets from "./pages/Tickets.tsx";
 import SprocketHoles from "./components/SprocketHoles.tsx";
-import SubmitForm from "./pages/SubmitForm.tsx";
+import ProfilePage from "./pages/ProfilePage .tsx";
 
 const App = () => {
   return (
@@ -22,7 +22,7 @@ const App = () => {
         <Route path="/submit" element={<Submit />} />
         <Route path="/donate" element={<Donate />} />
         <Route path="/tickets" element={<Tickets />} />
-        <Route path="/submitform" element={<SubmitForm />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
       <Footer />
       <SprocketHoles variant="top" />

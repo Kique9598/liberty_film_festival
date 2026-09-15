@@ -65,7 +65,7 @@ const Home = () => {
             tincidunt elementum sapien, in tempor erat sodales in.
           </p>
           <ButtonContainer>
-            <Button to={"/submitform"} label="Start a submission" />
+            <Button to={"/profile"} label="Start a submission" />
             <Button to={"/submit"} label="Full requirements" ghost />
           </ButtonContainer>
         </div>
