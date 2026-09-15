@@ -47,10 +47,14 @@ const About = () => {
         </PageHero>
       </Section>
       <Section dark>
-        <div className="flex flex gap-10 items-center">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-10 items-center">
           <div className="flex gap-4 items-center">
-            <div className="flex-shrink-0 -rotate-45 ">
-              <Icon icon={<TbTicket strokeWidth={1}/>} size="90" color="#635748" />
+            <div className="hidden md:block shrink-0 -rotate-45">
+              <Icon
+                icon={<TbTicket strokeWidth={1} />}
+                size="90"
+                color="#635748"
+              />
             </div>
             <SectionHeader
               title={"A night at the movies — live in New York City."}

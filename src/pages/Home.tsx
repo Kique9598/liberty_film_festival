@@ -27,9 +27,9 @@ const Home = () => {
       <Timeline />
 
       <Section className="bg-[#DCD8C9]">
-        <div className="flex flex gap-10 items-center">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-10 items-center">
           <div className="flex gap-4 items-center">
-            <div className="flex-shrink-0 -rotate-45 ">
+            <div className="hidden md:block shrink-0 -rotate-45">
               <Icon
                 icon={<TbTicket strokeWidth={1} />}
                 size="90"
