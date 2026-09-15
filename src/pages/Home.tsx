@@ -49,7 +49,7 @@ const Home = () => {
             title="LinkTree"
             icon={<SiLinktree />}
             ariaLabel={"LinkTree"}
-            variant="gold"
+            variant="green"
             size="medium"
           />
         </div>

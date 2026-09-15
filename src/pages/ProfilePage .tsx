@@ -263,14 +263,14 @@ function ExistingSummary({
   return (
     <section className="card-default flex flex-col gap-2">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <strong className="font-sans text-lg">{submission.title || "(untitled)"}</strong>
+        <strong className="font-sans text-lg">
+          {submission.title || "(untitled)"}
+        </strong>
         <span className="font-sans text-xs font-bold uppercase tracking-[0.12em] text-gold-600">
           Status: {submission.status}
         </span>
       </div>
-      <div className="text-sm text-muted">
-        Directors: {names || "none"}
-      </div>
+      <div className="text-sm text-muted">Directors: {names || "none"}</div>
     </section>
   );
 }
@@ -408,24 +408,46 @@ function PhaseOneForm({
         <p className="mb-0 text-sm text-muted">
           If multiple eligible student directors worked on the film, decide
           together which one university the submission will be made on behalf
-          of. The selected university is the university represented by this
-          film in the competition.
+          of. The selected university is the university represented by this film
+          in the competition.
         </p>
         <div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
           <Field label="Student email (eligibility)">
-            <input className={inputClass} type="email" value={f.studentEmail} onChange={set("studentEmail")} />
+            <input
+              className={inputClass}
+              type="email"
+              value={f.studentEmail}
+              onChange={set("studentEmail")}
+            />
           </Field>
           <Field label="Student ID">
-            <input className={inputClass} value={f.studentId} onChange={set("studentId")} />
+            <input
+              className={inputClass}
+              value={f.studentId}
+              onChange={set("studentId")}
+            />
           </Field>
           <Field label="University represented by this submission">
-            <input className={inputClass} value={f.university} onChange={set("university")} />
+            <input
+              className={inputClass}
+              value={f.university}
+              onChange={set("university")}
+            />
           </Field>
           <Field label="Major">
-            <input className={inputClass} value={f.major} onChange={set("major")} />
+            <input
+              className={inputClass}
+              value={f.major}
+              onChange={set("major")}
+            />
           </Field>
           <Field label="Expected graduation year">
-            <input className={inputClass} type="number" value={f.gradYear} onChange={set("gradYear")} />
+            <input
+              className={inputClass}
+              type="number"
+              value={f.gradYear}
+              onChange={set("gradYear")}
+            />
           </Field>
         </div>
 
@@ -435,24 +457,50 @@ function PhaseOneForm({
           </p>
           <div className="flex flex-col gap-3">
             {directors.map((d, i) => (
-              <div key={i} className="grid grid-cols-1 items-end gap-3 sm:grid-cols-[1fr_1fr_1fr_auto]">
+              <div
+                key={i}
+                className="grid grid-cols-1 items-end gap-3 sm:grid-cols-[1fr_1fr_1fr_auto]"
+              >
                 <Field label="First name">
-                  <input className={inputClass} value={d.first} onChange={(e) => updateDirector(i, "first", e.target.value)} />
+                  <input
+                    className={inputClass}
+                    value={d.first}
+                    onChange={(e) => updateDirector(i, "first", e.target.value)}
+                  />
                 </Field>
                 <Field label="Middle name">
-                  <input className={inputClass} value={d.middle} onChange={(e) => updateDirector(i, "middle", e.target.value)} />
+                  <input
+                    className={inputClass}
+                    value={d.middle}
+                    onChange={(e) =>
+                      updateDirector(i, "middle", e.target.value)
+                    }
+                  />
                 </Field>
                 <Field label="Last name">
-                  <input className={inputClass} value={d.last} onChange={(e) => updateDirector(i, "last", e.target.value)} />
+                  <input
+                    className={inputClass}
+                    value={d.last}
+                    onChange={(e) => updateDirector(i, "last", e.target.value)}
+                  />
                 </Field>
                 <label className="mb-2 flex items-center gap-2 whitespace-nowrap font-sans text-xs font-bold uppercase tracking-[0.08em] text-gold-700">
-                  <input type="radio" name="primary" checked={d.isPrimary} onChange={() => setPrimary(i)} />
+                  <input
+                    type="radio"
+                    name="primary"
+                    checked={d.isPrimary}
+                    onChange={() => setPrimary(i)}
+                  />
                   Qualifying director
                 </label>
               </div>
             ))}
           </div>
-          <button className={secondaryButtonClass} type="button" onClick={addDirector}>
+          <button
+            className={secondaryButtonClass}
+            type="button"
+            onClick={addDirector}
+          >
             + Add another director
           </button>
         </div>
@@ -465,27 +513,55 @@ function PhaseOneForm({
           showDivider={false}
         />
         <Field label="Film title">
-          <input className={inputClass} value={f.title} onChange={set("title")} />
+          <input
+            className={inputClass}
+            value={f.title}
+            onChange={set("title")}
+          />
         </Field>
         <div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
           <Field label="Completion year">
-            <input className={inputClass} type="number" value={f.completionYear} onChange={set("completionYear")} />
+            <input
+              className={inputClass}
+              type="number"
+              value={f.completionYear}
+              onChange={set("completionYear")}
+            />
           </Field>
           <Field label="Runtime (seconds, maximum 600)">
-            <input className={inputClass} type="number" value={f.runtime} onChange={set("runtime")} />
+            <input
+              className={inputClass}
+              type="number"
+              value={f.runtime}
+              onChange={set("runtime")}
+            />
           </Field>
         </div>
         <Field label="Film screener URL (private Vimeo, YouTube, or link)">
-          <input className={inputClass} value={f.screener} onChange={set("screener")} />
+          <input
+            className={inputClass}
+            value={f.screener}
+            onChange={set("screener")}
+          />
         </Field>
         <Field label="Logline (one sentence)">
-          <input className={inputClass} value={f.logline} onChange={set("logline")} />
+          <input
+            className={inputClass}
+            value={f.logline}
+            onChange={set("logline")}
+          />
         </Field>
         <Field label="Synopsis (50–150 words)">
-          <textarea className={`${inputClass} min-h-24`} value={f.synopsis} onChange={set("synopsis")} />
+          <textarea
+            className={`${inputClass} min-h-24`}
+            value={f.synopsis}
+            onChange={set("synopsis")}
+          />
         </Field>
         <div>
-          <button className={buttonClass} onClick={submit}>Submit phase one</button>
+          <button className={buttonClass} onClick={submit}>
+            Submit phase one
+          </button>
         </div>
       </section>
       <StatusLine status={status} />
@@ -607,10 +683,18 @@ function PhaseTwoForm({
         />
       </Field>
       <Field label="Trailer URL">
-        <input className={inputClass} value={t.trailer} onChange={setText("trailer")} />
+        <input
+          className={inputClass}
+          value={t.trailer}
+          onChange={setText("trailer")}
+        />
       </Field>
       <Field label="Website URL">
-        <input className={inputClass} value={t.website} onChange={setText("website")} />
+        <input
+          className={inputClass}
+          value={t.website}
+          onChange={setText("website")}
+        />
       </Field>
       <Field label="Screening file URL (1080p+)">
         <input
@@ -620,13 +704,27 @@ function PhaseTwoForm({
         />
       </Field>
       <Field label="Vertical poster (image)">
-        <input className={fileInputClass} type="file" accept="image/*" onChange={setFile("vPoster")} />
+        <input
+          className={fileInputClass}
+          type="file"
+          accept="image/*"
+          onChange={setFile("vPoster")}
+        />
       </Field>
       <Field label="Horizontal poster (image)">
-        <input className={fileInputClass} type="file" accept="image/*" onChange={setFile("hPoster")} />
+        <input
+          className={fileInputClass}
+          type="file"
+          accept="image/*"
+          onChange={setFile("hPoster")}
+        />
       </Field>
       <Field label="Closed captions">
-        <input className={fileInputClass} type="file" onChange={setFile("captions")} />
+        <input
+          className={fileInputClass}
+          type="file"
+          onChange={setFile("captions")}
+        />
       </Field>
       <Field label="Finished screenplay (PDF)">
         <input
