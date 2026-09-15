@@ -9,14 +9,12 @@ import {
 import { SiLinktree } from "react-icons/si";
 import { CONTACT_EMAIL } from "../constants/links";
 import { contactLinks } from "../data/contactLinks";
+import IconButton from "./IconButton";
 
 const sectionLabelClass = "label-caps mb-3 block";
 
 const footerLinkClass =
   "font-cormorant text-base text-ink transition-colors hover:text-muted sm:text-lg";
-
-const socialIconClass =
-  "flex h-9 w-9 items-center justify-center rounded-full border border-parch-400 text-green-700 transition-all hover:-translate-y-0.5 hover:border-green-500 hover:bg-green-50";
 
 const Footer = () => {
   return (
@@ -53,66 +51,42 @@ const Footer = () => {
             <h5 className={sectionLabelClass}>Contact</h5>
             <div className="flex flex-col items-start gap-3">
               <div className="flex flex-wrap gap-2">
-                <a
+                <IconButton
                   href={contactLinks.instagram}
-                  className={socialIconClass}
-                  aria-label="Instagram"
+                  ariaLabel="Instagram"
                   title="Instagram"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaInstagram aria-hidden="true" />
-                </a>
-                <a
+                  icon={<FaInstagram aria-hidden="true" />}
+                />
+                <IconButton
                   href={contactLinks.twitter}
-                  className={socialIconClass}
-                  aria-label="X"
+                  ariaLabel="X"
                   title="X"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaXTwitter aria-hidden="true" />
-                </a>
-                <a
+                  icon={<FaXTwitter aria-hidden="true" />}
+                />
+                <IconButton
                   href={contactLinks.facebook}
-                  className={socialIconClass}
-                  aria-label="Facebook"
+                  ariaLabel="Facebook"
                   title="Facebook"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaFacebookF aria-hidden="true" />
-                </a>
-                <a
+                  icon={<FaFacebookF aria-hidden="true" />}
+                />
+                <IconButton
                   href={contactLinks.tiktok}
-                  className={socialIconClass}
-                  aria-label="TikTok"
+                  ariaLabel="TikTok"
                   title="TikTok"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaTiktok aria-hidden="true" />
-                </a>
-                <a
+                  icon={<FaTiktok aria-hidden="true" />}
+                />
+                <IconButton
                   href={contactLinks.youtube}
-                  className={socialIconClass}
-                  aria-label="YouTube"
+                  ariaLabel="YouTube"
                   title="YouTube"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaYoutube aria-hidden="true" />
-                </a>
-                <a
+                  icon={<FaYoutube aria-hidden="true" />}
+                />
+                <IconButton
                   href={contactLinks.linktree}
-                  className={socialIconClass}
-                  aria-label="Linktree"
+                  ariaLabel="Linktree"
                   title="Linktree"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <SiLinktree aria-hidden="true" />
-                </a>
+                  icon={<SiLinktree aria-hidden="true" />}
+                />
               </div>
               <a href={`mailto:${CONTACT_EMAIL}`} className={footerLinkClass}>
                 {CONTACT_EMAIL}

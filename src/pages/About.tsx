@@ -11,6 +11,11 @@ import ButtonContainer from "../components/ButtonContainer";
 import { PROMO_VIDEO_ID } from "../constants/links";
 import { founders, team } from "../data/team";
 import backdrop from "../assets/backdrop.png";
+import Icon from "../components/Icon";
+import { TbTicket } from "react-icons/tb";
+import IconButton from "../components/IconButton";
+import { contactLinks } from "../data/contactLinks";
+import { SiLinktree } from "react-icons/si";
 
 const About = () => {
   return (
@@ -41,7 +46,30 @@ const About = () => {
           </ButtonContainer>
         </PageHero>
       </Section>
+      <Section dark>
+        <div className="flex flex gap-10 items-center">
+          <div className="flex gap-4 items-center">
+            <div className="flex-shrink-0 -rotate-45 ">
+              <Icon icon={<TbTicket strokeWidth={1}/>} size="90" color="#635748" />
+            </div>
+            <SectionHeader
+              title={"A night at the movies — live in New York City."}
+              description={`Liberty culminates in an in-person screening and awards night. Venue, date, and tickets are announced soon. Follow us on yor favorate social media platform and be the first to know! →`}
+              showDivider={false}
+            />
+          </div>
 
+          <IconButton
+            href={contactLinks.linktree}
+            aria-label="LinkTree"
+            title="LinkTree"
+            icon={<SiLinktree />}
+            ariaLabel={"LinkTree"}
+            variant="gold"
+            size="medium"
+          />
+        </div>
+      </Section>
       <Section className="bg-[#DCD8C9]">
         <TwoColumnMedia
           title="Our mission"

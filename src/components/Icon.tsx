@@ -1,16 +1,15 @@
 import { IconContext } from "react-icons/lib";
-import { LuExternalLink } from "react-icons/lu";
 
 type IconProps = {
-  size?: string;
+  size?: string; // defaults to 16px
+  icon?: React.ReactNode;
+  color?: string; // defaults to currentColor
 };
 
-const Icon = ({ size = "24" }: IconProps) => {
+const Icon = ({ size, icon, color }: IconProps) => {
   return (
-    <IconContext.Provider value={{ className: "shared-class", size: size }}>
-      <>
-        <LuExternalLink />
-      </>
+    <IconContext.Provider value={{ size: size, color: color}}>
+      {icon}
     </IconContext.Provider>
   );
 };

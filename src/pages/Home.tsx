@@ -10,6 +10,10 @@ import SectionHeader from "../components/SectionHeader";
 import Card from "../components/Card";
 import ButtonContainer from "../components/ButtonContainer";
 import { contactLinks } from "../data/contactLinks";
+import IconButton from "../components/IconButton";
+import { SiLinktree } from "react-icons/si";
+import { TbTicket } from "react-icons/tb";
+import Icon from "../components/Icon";
 
 const Home = () => {
   return (
@@ -22,23 +26,32 @@ const Home = () => {
       <Hero />
       <Timeline />
 
-      <Section variant="banner" dark>
-        <div className="flex flex-col gap-6 text-center md:text-left">
-          <p className="label-caps mb-0 text-gold-300">Live event</p>
-          <h2 className="mb-0 text-3xl text-white sm:text-4xl md:text-5xl">
-            A night at the movies — live in New York City.
-          </h2>
-          <p className="mb-0 max-w-3xl text-lg text-white/80">
-            Liberty culminates in an in-person screening and awards night.
-            Venue, date, and tickets are announced soon. Be the first to know.
-          </p>
-          <ButtonContainer>
-            <Button
-              link={contactLinks.linktree}
-              label="Follow on Linktree"
-              variant="gold"
+      <Section className="bg-[#DCD8C9]">
+        <div className="flex flex gap-10 items-center">
+          <div className="flex gap-4 items-center">
+            <div className="flex-shrink-0 -rotate-45 ">
+              <Icon
+                icon={<TbTicket strokeWidth={1} />}
+                size="90"
+                color="#C8BAA8"
+              />
+            </div>
+            <SectionHeader
+              title={"A night at the movies — live in New York City."}
+              description={`Liberty culminates in an in-person screening and awards night. Venue, date, and tickets are announced soon. Follow us on yor favorate social media platform and be the first to know! →`}
+              showDivider={false}
             />
-          </ButtonContainer>
+          </div>
+
+          <IconButton
+            href={contactLinks.linktree}
+            aria-label="LinkTree"
+            title="LinkTree"
+            icon={<SiLinktree />}
+            ariaLabel={"LinkTree"}
+            variant="gold"
+            size="medium"
+          />
         </div>
       </Section>
       <Section row>
