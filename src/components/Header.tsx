@@ -3,6 +3,7 @@ import NavLink from "./NavLink.tsx";
 import NavButton from "./NavButton.tsx";
 import { handleSameRouteClick } from "../utils/scroll";
 import { useEffect, useState } from "react";
+import textLogo from "../assets/text-logo.png";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -23,23 +24,18 @@ const Header = () => {
       <div className="site-header-inner">
         <Link
           to="/"
-          className="site-logo"
           onClick={() => handleSameRouteClick(pathname, "/")}
         >
-          Liberty Film Festival
+          <img src={textLogo} className="block h-11 hover:translate-x-1 transition-all duration-200" alt="Liberty Film Festival" />
         </Link>
 
-        <nav className="hidden flex-1 items-center justify-center md:flex">
+        <nav className="hidden flex-1 justify-end items-center md:flex">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/submit">Submit</NavLink>
           <NavLink to="/tickets">Tickets</NavLink>
           <NavLink to="/donate">Donate</NavLink>
         </nav>
-
-        <div className="ml-auto shrink-0">
-          <NavButton to="/tickets">Get Ticket Alerts</NavButton>
-        </div>
       </div>
     </header>
   );

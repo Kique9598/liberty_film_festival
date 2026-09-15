@@ -83,11 +83,11 @@ const About = () => {
         </div>
       </Section>
 
-      <Section variant="banner" dark>
+      <Section variant="banner">
         <SponsorsSection />
       </Section>
 
-      <Section>
+      {/* <Section>
         <div className="flex flex-col gap-6">
           <SectionHeader
             title="Team"
@@ -104,7 +104,7 @@ const About = () => {
             ))}
           </div>
         </div>
-      </Section>
+      </Section> */}
 
       <Section className="bg-[#DCD8C9]">
         <SectionHeader title={"Participating Schools"} centered />
