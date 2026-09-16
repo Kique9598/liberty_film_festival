@@ -107,7 +107,7 @@ const About = () => {
             centered
             showDivider
           />
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex w-full flex-wrap justify-center gap-4">
             {founders.map((member) => (
               <FounderCard key={member.name} member={member} />
             ))}
@@ -115,9 +115,9 @@ const About = () => {
         </div>
       </Section>
 
-      <Section variant="banner">
+      {/* <Section variant="banner">
         <SponsorsSection />
-      </Section>
+      </Section> */}
 
       {/* <Section>
         <div className="flex flex-col gap-6">
@@ -138,7 +138,7 @@ const About = () => {
         </div>
       </Section> */}
 
-      <Section className="bg-[#DCD8C9]">
+      <Section className="bg-[#DCD8C9]" variant="full">
         <SectionHeader title={"Participating Schools"} centered />
         <ParticipatingSchools />
       </Section>

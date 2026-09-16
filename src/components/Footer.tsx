@@ -14,7 +14,7 @@ import IconButton from "./IconButton";
 const sectionLabelClass = "label-caps mb-3 block";
 
 const footerLinkClass =
-  "font-cormorant text-base text-ink transition-colors hover:text-muted sm:text-lg";
+  "font-cormorant text-base text-ink transition-colors hover:text-[#635748] sm:text-lg";
 
 const Footer = () => {
   return (
@@ -39,10 +39,13 @@ const Footer = () => {
                 About
               </Link>
               <Link to="/submit" className={footerLinkClass}>
-                Submit a Film
+                Submit
+              </Link>
+              <Link to="/tickets" className={footerLinkClass}>
+                Tickets
               </Link>
               <Link to="/donate" className={footerLinkClass}>
-                Donate
+                Support
               </Link>
             </nav>
           </div>

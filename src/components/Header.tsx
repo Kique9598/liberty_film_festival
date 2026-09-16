@@ -22,11 +22,12 @@ const Header = () => {
       className={`site-header ${scrolled ? "site-header--scrolled" : ""}`}
     >
       <div className="site-header-inner">
-        <Link
-          to="/"
-          onClick={() => handleSameRouteClick(pathname, "/")}
-        >
-          <img src={textLogo} className="block h-11 hover:translate-x-1 transition-all duration-200" alt="Liberty Film Festival" />
+        <Link to="/" onClick={() => handleSameRouteClick(pathname, "/")}>
+          <img
+            src={textLogo}
+            className="block h-11 hover:translate-x-1 transition-all duration-200"
+            alt="Liberty Film Festival"
+          />
         </Link>
 
         <nav className="hidden flex-1 justify-end items-center md:flex">
@@ -34,7 +35,7 @@ const Header = () => {
           <NavLink to="/about">About</NavLink>
           <NavLink to="/submit">Submit</NavLink>
           <NavLink to="/tickets">Tickets</NavLink>
-          <NavLink to="/donate">Donate</NavLink>
+          <NavLink to="/donate">Support</NavLink>
         </nav>
       </div>
     </header>

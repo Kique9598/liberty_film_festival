@@ -5,11 +5,19 @@ type FounderCardProps = {
 };
 
 const FounderCard = ({ member }: FounderCardProps) => {
-  const { name, school, title } = member;
+  const { name, school, title, headshot } = member;
 
   return (
     <div className="founder-card">
-      <div className="founder-avatar" />
+      {headshot ? (
+        <img
+          className="founder-avatar object-cover"
+          src={headshot}
+          alt={`${name} headshot`}
+        />
+      ) : (
+        <div className="founder-avatar" aria-hidden="true" />
+      )}
       <p className="mb-0 font-cormorant text-base font-medium leading-tight text-ink">
         {name}
       </p>

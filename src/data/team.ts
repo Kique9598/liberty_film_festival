@@ -1,7 +1,14 @@
+const evanHeadshot = new URL("../assets/evan_headshot.JPG", import.meta.url)
+  .href;
+
+const kallenHeadshot = new URL("../assets/kallen_headshot.png", import.meta.url)
+  .href;
+
 export type TeamMember = {
   name: string;
   school: string;
   title: string;
+  headshot?: string;
 };
 
 export const founders: TeamMember[] = [
@@ -9,11 +16,13 @@ export const founders: TeamMember[] = [
     name: "Kallen Fenster",
     school: "Columbia University",
     title: "Festival Director",
+    headshot: kallenHeadshot,
   },
   {
     name: "Evan O'Rourke",
     school: "NYU",
     title: "Managing Director",
+    headshot: evanHeadshot,
   },
 ];
 

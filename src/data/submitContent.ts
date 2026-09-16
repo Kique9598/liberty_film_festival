@@ -2,7 +2,7 @@ export const filmRequirements = [
   "Completed within the past two (2) years (as of the submission deadline)",
   "10 minutes maximum, including credits",
   "Any genre",
-  "Exactly one primary student director (for the purposes of eligibility evaluation)",
+  "Exactly one qualifying student director (for the purposes of eligibility evaluation)",
   "Films must be primarily student-produced.",
   "The submitting filmmaker must hold all necessary rights and permissions for the film's content, music, and materials.",
 ];
@@ -13,18 +13,18 @@ export const submissionRules = [
   "Submissions must include substantial evidence that the film was produced within the eligible window (e.g. BTS footage, DaVinci timestamps)",
 ];
 
-export const primaryStudentDirectorDefinition =
+export const qualifyingStudentDirectorDefinition =
   "This person must have been enrolled at a participating college or university while the film was being produced. If they have since graduated, the film's final completion must fall no later than 6 months after their graduation date.";
 
 export const faqItems = [
   {
     question: "Can a film have more than one director?",
     answer:
-      "Yes. Co-directors are allowed, but only the primary student director's eligibility is evaluated.",
+      "Yes. Co-directors are allowed, but only the qualifying student director's eligibility is evaluated.",
   },
   {
     question:
-      "I directed two films. On one, another student is the primary director; on the other, I'm the primary director. Can I submit mine?",
+      "I directed two films. On one, another student is the qualifying director; on the other, I'm the qualifying director. Can I submit mine?",
     answer:
       "No. Each person may be credited as a director — primary or co-director — on only one submitted film. Since you're already credited as a co-director on the first film's submission, submitting a second film where you're the director would credit you on two submissions, which isn't allowed. You'd need to choose which single film carries your director credit.",
   },

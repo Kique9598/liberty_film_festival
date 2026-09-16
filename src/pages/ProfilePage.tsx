@@ -6,7 +6,7 @@
 //
 // Changes in this version:
 //   - University is per-director (a dropdown of the 9 participating schools).
-//     The submission's affiliation is the primary student director's university.
+//     The submission's affiliation is the qualifying student director's university.
 //   - Optional contact email; if left blank we store the account email at
 //     submit time, so the column always holds a real address.
 
@@ -211,7 +211,7 @@ function ExistingSummary({
     .map((d) => {
       const name = [d.first_name, d.last_name].filter(Boolean).join(" ");
       const uni = d.university ? ` — ${d.university}` : "";
-      return name + uni + (d.is_primary_student ? " (primary)" : "");
+      return name + uni + (d.is_primary_student ? " (qualifying)" : "");
     })
     .join(", ");
   return (
@@ -283,7 +283,7 @@ function PhaseOneForm({
     setDirectors((d) =>
       d.map((row, idx) => (idx === i ? { ...row, [key]: value } : row)),
     );
-  const setPrimary = (i: number) =>
+  const setQualifyingDirector = (i: number) =>
     setDirectors((d) =>
       d.map((row, idx) => ({ ...row, isPrimary: idx === i })),
     );
@@ -296,12 +296,12 @@ function PhaseOneForm({
     if (primaries.length !== 1)
       return setStatus({
         err: true,
-        msg: "Mark exactly one primary student director.",
+        msg: "Mark exactly one qualifying student director.",
       });
     if (!primaries[0].university) {
       return setStatus({
         err: true,
-        msg: "The primary student director must select their university.",
+        msg: "The qualifying student director must select their university.",
       });
     }
 
@@ -420,7 +420,7 @@ function PhaseOneForm({
       </Field>
 
       <label style={labelStyle}>
-        Directors — each selects their university. Mark one as the primary
+        Directors — each selects their university. Mark one as the qualifying
         student director (their university is the submission’s affiliation).
       </label>
       {directors.map((d, i) => (
@@ -469,9 +469,10 @@ function PhaseOneForm({
               type="radio"
               name="primary"
               checked={d.isPrimary}
-              onChange={() => setPrimary(i)}
+              style={{ accentColor: "#5d745d" }}
+              onChange={() => setQualifyingDirector(i)}
             />{" "}
-            primary
+            qualifying
           </label>
         </div>
       ))}
@@ -710,7 +711,7 @@ const btn: CSSProperties = {
   padding: "8px 14px",
   border: "none",
   borderRadius: 6,
-  background: "#2d6cdf",
+  background: "#5d745d",
   color: "#fff",
   cursor: "pointer",
   marginTop: 10,

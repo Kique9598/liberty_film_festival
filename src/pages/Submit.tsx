@@ -9,7 +9,7 @@ import backdrop from "../assets/backdrop.png";
 import {
   filmRequirements,
   submissionRules,
-  primaryStudentDirectorDefinition,
+  qualifyingStudentDirectorDefinition,
   faqItems,
   atSubmission,
   ifSelected,
@@ -73,10 +73,12 @@ const Submit = () => {
       <Section className="bg-[#DCD8C9]">
         <div className="flex flex-col gap-6">
           <SectionHeader
-            title="Primary Student Director"
-            description="This person is the primary student director for the film."
+            title="Qualifying Student Director"
+            description="This person is the qualifying student director for the film."
           />
-          <p className="mb-0 text-body">{primaryStudentDirectorDefinition}</p>
+          <p className="mb-0 text-body">
+            {qualifyingStudentDirectorDefinition}
+          </p>
         </div>
       </Section>
 

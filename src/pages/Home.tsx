@@ -47,7 +47,7 @@ const Home = () => {
             href={contactLinks.linktree}
             aria-label="LinkTree"
             title="LinkTree"
-            icon={<SiLinktree />}
+            icon={<SiLinktree aria-hidden="true" />}
             ariaLabel={"LinkTree"}
             variant="green"
             size="medium"
