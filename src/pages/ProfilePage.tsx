@@ -22,6 +22,7 @@ type DirectorRow = Database["public"]["Tables"]["directors"]["Row"];
 type SubmissionWithDirectors = SubmissionRow & { directors: DirectorRow[] };
 
 type StatusMsg = { err: boolean; msg: string } | null;
+type FieldErrors = Record<string, string | undefined>;
 type DirectorInput = {
   first: string;
   middle: string;
@@ -42,6 +43,82 @@ const UNIVERSITIES: { value: University; label: string }[] = [
   { value: "Brooklyn College", label: "Brooklyn College" },
   { value: "The New School", label: "The New School" },
 ];
+
+function friendlyAuthError(message: string, action: "signup" | "login") {
+  const normalized = message.toLowerCase();
+  if (
+    normalized.includes("already registered") ||
+    normalized.includes("already exists")
+  ) {
+    return "This account is already taken. Try logging in instead.";
+  }
+  if (normalized.includes("invalid login credentials")) {
+    return "That email or password is incorrect. Please try again.";
+  }
+  if (normalized.includes("email not confirmed")) {
+    return "Please confirm your email address before logging in.";
+  }
+  if (normalized.includes("password") && normalized.includes("character")) {
+    return "Your password must be at least 6 characters.";
+  }
+  if (normalized.includes("rate limit")) {
+    return "Too many attempts. Please wait a moment and try again.";
+  }
+  return action === "signup"
+    ? "We could not create your account. Please check your details and try again."
+    : "We could not log you in. Please check your details and try again.";
+}
+
+function friendlySubmissionError(code?: string) {
+  if (code === "23505") return "This student email already has a submission.";
+  if (code === "23514") return "Runtime must be between 1 and 600 seconds.";
+  return "We could not save your submission. Please check the form and try again.";
+}
+
+function validatePhaseField(key: keyof PhaseOneFields, value: string) {
+  const trimmed = value.trim();
+  if (
+    [
+      "title",
+      "studentEmail",
+      "studentId",
+      "gradYear",
+      "major",
+      "screener",
+      "runtime",
+      "completionYear",
+      "logline",
+      "synopsis",
+    ].includes(key) &&
+    !trimmed
+  ) {
+    return `${key === "studentEmail" ? "Student email" : key} is required.`;
+  }
+  if (key === "studentEmail" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+    return "Enter a valid student email address.";
+  }
+  if (key === "gradYear" || key === "completionYear") {
+    const year = Number(trimmed);
+    const minimumYear = key === "completionYear" ? 2025 : 2023;
+    if (!Number.isInteger(year) || year < minimumYear || year > 2027) {
+      return `${key === "gradYear" ? "Expected graduation year" : "Completion year"} must be between ${minimumYear} and 2027.`;
+    }
+  }
+  if (key === "runtime") {
+    const runtime = Number(trimmed);
+    if (!Number.isInteger(runtime) || runtime < 1 || runtime > 600) {
+      return "Runtime must be between 1 and 600 seconds.";
+    }
+  }
+  if (key === "screener") {
+    try {
+      new URL(trimmed);
+    } catch {
+      return "Enter a valid film screener URL.";
+    }
+  }
+  return undefined;
+}
 
 // ============================================================ top level
 export default function ProfilePage() {
@@ -85,10 +162,33 @@ function AuthPanel() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState<StatusMsg>(null);
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+
+  const validateAuthField = (key: "email" | "password", value: string) => {
+    const message = !value.trim()
+      ? `${key === "email" ? "Email" : "Password"} is required.`
+      : key === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())
+        ? "Enter a valid email address."
+        : key === "password" && value.length < 6
+          ? "Password must be at least 6 characters."
+          : undefined;
+    setFieldErrors((current) => ({ ...current, [key]: message }));
+    return message;
+  };
 
   async function signUp() {
+    if (
+      validateAuthField("email", email) ||
+      validateAuthField("password", password)
+    )
+      return;
     const { data, error } = await supabase.auth.signUp({ email, password });
-    if (error) return setStatus({ err: true, msg: error.message });
+    if (error) {
+      return setStatus({
+        err: true,
+        msg: friendlyAuthError(error.message, "signup"),
+      });
+    }
     if (
       data.user &&
       data.user.identities &&
@@ -108,11 +208,18 @@ function AuthPanel() {
   }
 
   async function logIn() {
+    if (
+      validateAuthField("email", email) ||
+      validateAuthField("password", password)
+    )
+      return;
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
-    if (error) setStatus({ err: true, msg: error.message });
+    if (error) {
+      setStatus({ err: true, msg: friendlyAuthError(error.message, "login") });
+    }
   }
 
   return (
@@ -123,16 +230,27 @@ function AuthPanel() {
           style={input}
           type="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            validateAuthField("email", e.target.value);
+          }}
+          onBlur={() => validateAuthField("email", email)}
         />
+        <FieldError message={fieldErrors.email} />
       </Field>
       <Field label="Password">
         <input
           style={input}
           type="password"
+          minLength={6}
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            validateAuthField("password", e.target.value);
+          }}
+          onBlur={() => validateAuthField("password", password)}
         />
+        <FieldError message={fieldErrors.password} />
       </Field>
       <button style={btn} onClick={signUp}>
         Sign up
@@ -264,11 +382,23 @@ function PhaseOneForm({
     { first: "", middle: "", last: "", university: "", isPrimary: true },
   ]);
   const [status, setStatus] = useState<StatusMsg>(null);
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
 
   const set =
-    (k: keyof PhaseOneFields) =>
-    (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-      setF((p) => ({ ...p, [k]: e.target.value }));
+    (key: keyof PhaseOneFields) =>
+    (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      const value = event.target.value;
+      setF((previous) => ({ ...previous, [key]: value }));
+      setFieldErrors((current) => ({
+        ...current,
+        [key]: validatePhaseField(key, value),
+      }));
+    };
+  const validateField = (key: keyof PhaseOneFields) => {
+    const message = validatePhaseField(key, f[key]);
+    setFieldErrors((current) => ({ ...current, [key]: message }));
+    return message;
+  };
 
   const addDirector = () =>
     setDirectors((d) => [
@@ -287,8 +417,35 @@ function PhaseOneForm({
     setDirectors((d) =>
       d.map((row, idx) => ({ ...row, isPrimary: idx === i })),
     );
+  const removeDirector = (index: number) =>
+    setDirectors((current) => {
+      const remaining = current.filter((_, rowIndex) => rowIndex !== index);
+      if (!remaining.some((director) => director.isPrimary) && remaining[0]) {
+        remaining[0] = { ...remaining[0], isPrimary: true };
+      }
+      return remaining;
+    });
 
   async function submit() {
+    const fieldsToValidate: Array<keyof PhaseOneFields> = [
+      "title",
+      "studentEmail",
+      "studentId",
+      "gradYear",
+      "major",
+      "screener",
+      "runtime",
+      "completionYear",
+      "logline",
+      "synopsis",
+    ];
+    const errors = Object.fromEntries(
+      fieldsToValidate.map((key) => [key, validatePhaseField(key, f[key])]),
+    ) as FieldErrors;
+    setFieldErrors(errors);
+    const firstError = fieldsToValidate.map((key) => errors[key]).find(Boolean);
+    if (firstError) return setStatus({ err: true, msg: firstError });
+
     const dirs = directors.filter((d) => d.first || d.last);
     if (!dirs.length)
       return setStatus({ err: true, msg: "Add at least one director." });
@@ -326,13 +483,10 @@ function PhaseOneForm({
       .single();
 
     if (subErr) {
-      const msg =
-        subErr.code === "23505"
-          ? "This student email already has a submission."
-          : subErr.code === "23514"
-            ? "Runtime must be 1–600 seconds (10 min max)."
-            : subErr.message;
-      return setStatus({ err: true, msg });
+      return setStatus({
+        err: true,
+        msg: friendlySubmissionError(subErr.code),
+      });
     }
 
     const rows = dirs.map((d) => ({
@@ -346,7 +500,10 @@ function PhaseOneForm({
     const { error: dirErr } = await supabase.from("directors").insert(rows);
     if (dirErr) {
       await supabase.from("submissions").delete().eq("id", sub.id);
-      return setStatus({ err: true, msg: "Director error: " + dirErr.message });
+      return setStatus({
+        err: true,
+        msg: "We could not save the director details. Please try again.",
+      });
     }
 
     setStatus({ err: false, msg: "Submitted." });
@@ -357,7 +514,13 @@ function PhaseOneForm({
     <section style={card}>
       <h2 style={h2}>Submit your film</h2>
       <Field label="Film title">
-        <input style={input} value={f.title} onChange={set("title")} />
+        <input
+          style={input}
+          value={f.title}
+          onChange={set("title")}
+          onBlur={() => validateField("title")}
+        />
+        <FieldError message={fieldErrors.title} />
       </Field>
       <Field label="Student email (eligibility)">
         <input
@@ -365,10 +528,18 @@ function PhaseOneForm({
           type="email"
           value={f.studentEmail}
           onChange={set("studentEmail")}
+          onBlur={() => validateField("studentEmail")}
         />
+        <FieldError message={fieldErrors.studentEmail} />
       </Field>
       <Field label="Student ID">
-        <input style={input} value={f.studentId} onChange={set("studentId")} />
+        <input
+          style={input}
+          value={f.studentId}
+          onChange={set("studentId")}
+          onBlur={() => validateField("studentId")}
+        />
+        <FieldError message={fieldErrors.studentId} />
       </Field>
       <Field label="Contact email (optional — defaults to your login email)">
         <input
@@ -382,41 +553,73 @@ function PhaseOneForm({
         <input
           style={input}
           type="number"
+          min={2020}
+          max={2027}
           value={f.gradYear}
           onChange={set("gradYear")}
+          onBlur={() => validateField("gradYear")}
         />
+        <FieldError message={fieldErrors.gradYear} />
       </Field>
       <Field label="Major">
-        <input style={input} value={f.major} onChange={set("major")} />
+        <input
+          style={input}
+          value={f.major}
+          onChange={set("major")}
+          onBlur={() => validateField("major")}
+        />
+        <FieldError message={fieldErrors.major} />
       </Field>
       <Field label="Film screener URL (private Vimeo/YouTube/link)">
-        <input style={input} value={f.screener} onChange={set("screener")} />
+        <input
+          style={input}
+          value={f.screener}
+          onChange={set("screener")}
+          onBlur={() => validateField("screener")}
+        />
+        <FieldError message={fieldErrors.screener} />
       </Field>
       <Field label="Runtime (seconds, max 600)">
         <input
           style={input}
           type="number"
+          min={1}
+          max={600}
           value={f.runtime}
           onChange={set("runtime")}
+          onBlur={() => validateField("runtime")}
         />
+        <FieldError message={fieldErrors.runtime} />
       </Field>
       <Field label="Completion year">
         <input
           style={input}
           type="number"
+          min={2025}
+          max={2027}
           value={f.completionYear}
           onChange={set("completionYear")}
+          onBlur={() => validateField("completionYear")}
         />
+        <FieldError message={fieldErrors.completionYear} />
       </Field>
       <Field label="Logline (one sentence)">
-        <input style={input} value={f.logline} onChange={set("logline")} />
+        <input
+          style={input}
+          value={f.logline}
+          onChange={set("logline")}
+          onBlur={() => validateField("logline")}
+        />
+        <FieldError message={fieldErrors.logline} />
       </Field>
       <Field label="Synopsis (50–150 words)">
         <textarea
           style={{ ...input, minHeight: 70 }}
           value={f.synopsis}
           onChange={set("synopsis")}
+          onBlur={() => validateField("synopsis")}
         />
+        <FieldError message={fieldErrors.synopsis} />
       </Field>
 
       <label style={labelStyle}>
@@ -474,6 +677,14 @@ function PhaseOneForm({
             />{" "}
             qualifying
           </label>
+          <button
+            type="button"
+            style={{ ...btn, marginTop: 0, background: "#8c4b43" }}
+            onClick={() => removeDirector(i)}
+            aria-label={`Remove director ${i + 1}`}
+          >
+            Remove
+          </button>
         </div>
       ))}
       <button
@@ -589,10 +800,10 @@ function PhaseTwoForm({
       if (error) throw error;
       setStatus({ err: false, msg: "Finalist materials saved." });
       onSaved();
-    } catch (e) {
+    } catch {
       setStatus({
         err: true,
-        msg: "Error: " + (e instanceof Error ? e.message : String(e)),
+        msg: "We could not save the finalist materials. Please check the files and try again.",
       });
     }
   }
@@ -667,6 +878,15 @@ function Field({ label, children }: { label: string; children: ReactNode }) {
       <label style={labelStyle}>{label}</label>
       {children}
     </div>
+  );
+}
+
+function FieldError({ message }: { message?: string }) {
+  if (!message) return null;
+  return (
+    <span role="alert" style={{ color: "#a33f36", fontSize: 12 }}>
+      {message}
+    </span>
   );
 }
 
