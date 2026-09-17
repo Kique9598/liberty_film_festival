@@ -1,6 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
 import NavLink from "./NavLink.tsx";
-import NavButton from "./NavButton.tsx";
 import { handleSameRouteClick } from "../utils/scroll";
 import { useEffect, useState } from "react";
 import textLogo from "../assets/text-logo.png";

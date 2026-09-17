@@ -1,7 +1,7 @@
 const submissionDeadlines = [
   {
     label: "Submit by",
-    date: "January 23, 2027",
+    date: "January 23rd, 2027",
     description:
       "Film screener, synopsis, logline, and student verification through the submission form.",
   },
@@ -18,9 +18,10 @@ const submissionDeadlines = [
       "Promotional assets, screening files, captions, and deliverables for selected films.",
   },
   {
-    label: "Festival",
-    date: "March 6, 2027",
-    description: "Official screenings and industry programming.",
+    label: "Night of Liberty",
+    date: "March 6th, 2027",
+    description:
+      "The official showcase night with screenings and industry programming.",
   },
 ];
 

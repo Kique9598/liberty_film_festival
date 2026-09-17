@@ -11,6 +11,6 @@ export const submissionHighlights = [
   },
   {
     title: "Deadline",
-    description: "Submit by January 23, 2027. Free to enter.",
+    description: "Submit by January 23rd, 2027. Free to enter.",
   },
 ];

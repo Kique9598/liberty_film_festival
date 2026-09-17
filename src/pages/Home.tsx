@@ -85,7 +85,7 @@ const Home = () => {
           <Card
             id="03"
             title="Deadline"
-            body="Submissions close January 23, 2027. Selected films are asked for stills, poster art and cast & crew later."
+            body="Submissions close January 23rd, 2027. Selected films are asked for stills, poster art and cast & crew later."
             className="ml-auto"
           />
         </div>
