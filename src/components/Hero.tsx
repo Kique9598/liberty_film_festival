@@ -14,10 +14,7 @@ const Hero = () => {
         actions={<Button to="/submit" label="Submit a Film" />}
       >
         <p className="mb-0">
-          Welcome to Liberty Film Festival — the first independent
-          intercollegiate film festival to unite New York City's leading
-          universities, showcasing the next generation of filmmakers while
-          connecting student voices with industry professionals.
+          Welcome to Liberty Film Festival,  the first independent intercollegiate film festival, uniting New York City’s leading universities, showcasing the next generation of filmmakers while connecting student voices with industry professionals.
         </p>
       </PageHero>
     </Section>
