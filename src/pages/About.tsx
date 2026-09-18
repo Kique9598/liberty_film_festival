@@ -24,7 +24,7 @@ const About = () => {
         alt=""
         className="pointer-events-none absolute -top-24 -z-1 right-0 hidden w-48 opacity-90 sm:block md:-top-36 md:right-20 md:w-auto"
       />
-      <Section variant="hero">
+      <Section >
         <PageHero
           title={
             <>
@@ -34,10 +34,13 @@ const About = () => {
           }
         >
           <p className="mb-0">
-            Liberty Film Festival is a 2027 intercollegiate film festival
-            uniting New York City's top universities — Columbia, NYU, Fordham,
-            Pratt, Pace, SVA, Brooklyn College, and more — to celebrate the next
-            generation of filmmakers.
+            Liberty Film Festival is an annual intercollegiate film festival
+            showcasing the work of undergraduate filmmakers from New York City’s
+            leading universities, including Columbia, NYU, Fordham, Pratt, SVA,
+            Brooklyn College and more. <br /> <br /> We give accolades to the boldest
+            and most exciting work being made by the next generation of
+            filmmakers. We believe the future of film is in our hands, and we’re
+            here to give that future a stage!
           </p>
           <ButtonContainer>
             <Button to="/submit" label="Submit a film" />
@@ -57,7 +60,7 @@ const About = () => {
             </div>
             <SectionHeader
               title={"A night at the movies — live in New York City."}
-              description={`Liberty culminates in an in-person screening and awards night. Venue, date, and tickets are announced soon. Follow us on yor favorate social media platform and be the first to know! →`}
+              description={`Liberty culminates in an in-person screening and awards night! Venue, and tickets will soon be announced on our social media platforms. Be the first to know! →`}
               showDivider={false}
             />
           </div>
