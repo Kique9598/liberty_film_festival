@@ -38,7 +38,7 @@ const Home = () => {
             </div>
             <SectionHeader
               title={"A night at the movies — live in New York City."}
-              description={`Liberty culminates in an in-person screening and awards night. Venue, date, and tickets are announced soon. Follow us on yor favorate social media platform and be the first to know! →`}
+              description={`Liberty culminates in an in-person screening and awards night! Venue, and tickets will soon be announced on our social media platforms. Be the first to know! →`}
               showDivider={false}
             />
           </div>
@@ -54,38 +54,40 @@ const Home = () => {
           />
         </div>
       </Section>
-      <Section row>
+      <Section >
         <div className="flex flex-col flex-1 gap-4">
-          <SectionHeader title={"Three things to know before you submit."} />
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-            sollicitudin, eros sed convallis laoreet, diam turpis tempus lacus,
-            ornare imperdiet dui felis at dolor. Nulla et accumsan diam. Aenean
-            vitae neque finibus neque euismod imperdiet non id sem. Nullam
-            tincidunt elementum sapien, in tempor erat sodales in.
-          </p>
+          <SectionHeader
+            title={"How Does It Work?"}
+            description="Your film. Your school. Your stage."
+          />
           <ButtonContainer>
             <Button to={"/profile"} label="Start a submission" />
             <Button to={"/submit"} label="Full requirements" ghost />
           </ButtonContainer>
         </div>
 
-        <div className="flex flex-col flex-1/4 gap-4">
+        <div className="grid grid-cols-2 gap-4">
           <Card
             id="01"
-            title="Eligibility"
-            body="Current students and recent graduates of participating NYC universities."
+            title="Submit Your Film"
+            body="Submit any film you made as an undergraduate. It doesn’t have to be a school assignment, if you made it while you were an undergraduate, it’s eligible."
           />
           <Card
             id="02"
-            title="Format"
-            body="10 minutes max, credits included. Any genre, primarily student-produced."
+            title="Your School Selects Its Nominees"
+            body="Each participating university will have a panel of student judges who review submissions from their school and select films to be nominated for the festival’s awards."
             className="mx-auto"
           />
           <Card
             id="03"
-            title="Deadline"
-            body="Submissions close January 23rd, 2027. Selected films are asked for stills, poster art and cast & crew later."
+            title="The Festival Jury Chooses the Winners"
+            body="Each participating university will have a panel of student judges who review submissions from their school and select films to be nominated for the festival’s awards."
+            className="mx-auto"
+          />
+          <Card
+            id="04"
+            title="Public Screening & Awards Ceremony!"
+            body="All nominated films will screen at the Liberty Film Festival, culminating in an awards ceremony where the winners will be announced. Everyone is invited to attend."
             className="ml-auto"
           />
         </div>

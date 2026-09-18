@@ -8,7 +8,7 @@ type CardProps = {
 const Card = ({ title, body, id, className }: CardProps) => {
   return (
     <div
-      className={`flex max-w-90 overflow-hidden bg-[#F8F5F1] border border-[#D9CFC4] rounded-md ${className}`}
+      className={`flex  overflow-hidden bg-[#F8F5F1] border border-[#D9CFC4] rounded-md ${className}`}
     >
       <div className="v-sprockets" />
       <div className="flex gap-6 py-3 px-6">
