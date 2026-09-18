@@ -151,7 +151,7 @@ export default function ProfilePage() {
         lineHeight: 1.5,
       }}
     >
-      <h1 style={{ fontSize: 22 }}>Liberty Film Festival — submission</h1>
+      <h1 style={{ fontSize: 22 }}>Liberty Film Festival — Submission</h1>
       {user ? <SubmissionArea user={user} /> : <AuthPanel />}
     </div>
   );
