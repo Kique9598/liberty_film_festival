@@ -54,7 +54,7 @@ const Home = () => {
           />
         </div>
       </Section>
-      <Section >
+      <Section>
         <div className="flex flex-col flex-1 gap-4">
           <SectionHeader
             title={"How Does It Work?"}
@@ -81,7 +81,7 @@ const Home = () => {
           <Card
             id="03"
             title="The Festival Jury Chooses the Winners"
-            body="Each participating university will have a panel of student judges who review submissions from their school and select films to be nominated for the festival’s awards."
+            body="Nominated films are then judged by a festival jury made up of representatives from all participating schools."
             className="mx-auto"
           />
           <Card
