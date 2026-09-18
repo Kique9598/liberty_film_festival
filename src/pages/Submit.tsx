@@ -38,12 +38,10 @@ const Submit = () => {
           actions={<Button to={"/profile"} label="Start a submission" />}
         >
           <p className="mb-0">
-            Read everything below before submitting your film. It covers
-            eligibility, student verification, film requirements, and the
-            materials you'll need. Submission is free.
+            Read eligibility, student verification, film requirements, and the materials you’ll need. Submission is free! Read the following to understand eligibility, student verification, film requirements, and the materials you’ll need!
           </p>
           <p className="mb-0 font-sans text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
-            Free to enter · 10 minutes maximum · Any genre
+            Free to enter · 10 minute max
           </p>
         </PageHero>
       </Section>
@@ -191,10 +189,6 @@ const Submit = () => {
       <Section>
         <div className="mx-auto flex max-w-xl flex-col items-center gap-6 text-center">
           <h2 className="mb-0">Ready to submit?</h2>
-          <p className="mb-0 text-muted">
-            Complete the submission form here and upload your film and materials
-            through the custom Liberty Film Festival submission flow.
-          </p>
           <Button to={"/profile"} label="Start a submission" />
         </div>
       </Section>
