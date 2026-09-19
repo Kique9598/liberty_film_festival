@@ -9,6 +9,7 @@ import Donate from "./pages/Donate.tsx";
 import Tickets from "./pages/Tickets.tsx";
 import SprocketHoles from "./components/SprocketHoles.tsx";
 import ProfilePage from "./pages/ProfilePage.tsx";
+import { pages } from "./data/pages.ts";
 
 const App = () => {
   return (
@@ -17,12 +18,12 @@ const App = () => {
       <SprocketHoles variant="bottom" />
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/submit" element={<Submit />} />
-        <Route path="/donate" element={<Donate />} />
-        <Route path="/tickets" element={<Tickets />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path={pages.index.path} element={<Home />} />
+        <Route path={pages.about.path} element={<About />} />
+        <Route path={pages.submit.path} element={<Submit />} />
+        <Route path={pages.donate.path} element={<Donate />} />
+        <Route path={pages.tickets.path} element={<Tickets />} />
+        <Route path={pages.profile.path} element={<ProfilePage />} />
       </Routes>
       <Footer />
       <SprocketHoles variant="top" />

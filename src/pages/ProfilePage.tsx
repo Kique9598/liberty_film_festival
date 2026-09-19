@@ -182,7 +182,13 @@ function AuthPanel() {
       validateAuthField("password", password)
     )
       return;
-    const { data, error } = await supabase.auth.signUp({ email, password });
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: "https://www.libertyfilmfestival.org/profile",
+      },
+    });
     if (error) {
       return setStatus({
         err: true,

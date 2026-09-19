@@ -38,7 +38,9 @@ const Submit = () => {
           actions={<Button to={"/profile"} label="Start a submission" />}
         >
           <p className="mb-0">
-            Submission is free! Read the following to understand eligibility, student verification, film requirements, and the materials you’ll need!
+            Submission is free! Read the following to understand eligibility,
+            student verification, film requirements, and the materials you’ll
+            need!
           </p>
           <p className="mb-0 font-sans text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
             Free to enter · 10 minute max

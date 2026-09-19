@@ -19,8 +19,7 @@ export const donorTiers: DonorTier[] = [
   {
     tier: "Champion",
     amount: "$25",
-    perks:
-      "Name in the pre-show slideshow + an Instagram shoutout in a reel",
+    perks: "Name in the pre-show slideshow + an Instagram shoutout in a reel",
   },
   {
     tier: "Insider",
