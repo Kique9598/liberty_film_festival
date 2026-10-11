@@ -1,3 +1,9 @@
+type PageType = {
+  name: string;
+  path: string;
+  showInNav: boolean;
+};
+
 export const pages = {
   index: {
     name: "Home",
@@ -29,4 +35,4 @@ export const pages = {
     path: "/profile",
     showInNav: false,
   },
-};
+} as const satisfies Record<string, PageType>;

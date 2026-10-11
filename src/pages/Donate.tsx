@@ -29,10 +29,8 @@ const Donate = () => {
             <b>We believe young filmmakers deserve a chance to be seen.</b>{" "}
             <br />
             Liberty Film Festival is entirely student-run and independently
-            funded. Your donation helps give emerging filmmakers <b>
-              a real venue, a
-              real audience, and real industry access.
-            </b>
+            funded. Your donation helps give emerging filmmakers{" "}
+            <b>a real venue, a real audience, and real industry access.</b>
           </p>
           <p className="mb-0 font-sans text-xs font-bold uppercase tracking-[0.14em] text-gold-600">
             Even a small contribution helps put a film, and the filmmaker behind
