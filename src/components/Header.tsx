@@ -3,7 +3,6 @@ import NavLink from "./NavLink.tsx";
 import { handleSameRouteClick } from "../utils/scroll";
 import { useEffect, useState } from "react";
 import textLogo from "../assets/text-logo.png";
-import pages from "../data/pages.ts";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
