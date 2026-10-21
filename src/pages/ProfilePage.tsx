@@ -97,11 +97,16 @@ function validatePhaseField(key: keyof PhaseOneFields, value: string) {
   if (key === "studentEmail" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
     return "Enter a valid student email address.";
   }
-  if (key === "gradYear" || key === "completionYear") {
+  if (key === "gradYear") {
     const year = Number(trimmed);
-    const minimumYear = key === "completionYear" ? 2025 : 2023;
-    if (!Number.isInteger(year) || year < minimumYear || year > 2027) {
-      return `${key === "gradYear" ? "Expected graduation year" : "Completion year"} must be between ${minimumYear} and 2027.`;
+    if (!Number.isInteger(year) || year < 2025 || year > 2030) {
+      return `Expected graduation year must be between 2025 and 2030.`;
+    }
+  }
+  if (key === "completionYear") {
+    const year = Number(trimmed);
+    if (!Number.isInteger(year) || year < 2025 || year > 2027) {
+      return `Completion year must be between 2025 and 2027.`;
     }
   }
   if (key === "runtime") {
@@ -560,7 +565,7 @@ function PhaseOneForm({
           style={input}
           type="number"
           min={2020}
-          max={2027}
+          max={2030}
           value={f.gradYear}
           onChange={set("gradYear")}
           onBlur={() => validateField("gradYear")}
